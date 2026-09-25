@@ -1,0 +1,14 @@
+{
+  "name": "streaming child process pipes",
+  "kind": "compile",
+  "source": "streaming.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "OUT:hello\nERR:hello\n0\n",
+  "run_stderr": "",
+  "run_env": {
+    "STRUT_TEST_PYTHON": "{python}",
+    "STRUT_TEST_HELPER": "{fixture_dir}/stream-helper.py"
+  }
+}
