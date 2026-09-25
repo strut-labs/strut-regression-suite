@@ -1,0 +1,10 @@
+{
+  "name": "native compile and execute",
+  "kind": "compile",
+  "source": "native.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "sum=5\n",
+  "run_stderr": ""
+}
