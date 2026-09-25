@@ -1,0 +1,1 @@
+{"name":"enum explicit and implicit values","kind":"compile","source":"basic.p","run":true,"run_stdout":"1\n"}
