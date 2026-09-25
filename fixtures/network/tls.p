@@ -1,0 +1,5 @@
+function main() -> void : TlsError {
+    stream := tls_connect("127.0.0.1", 443);
+    stream.close();
+    return;
+}
