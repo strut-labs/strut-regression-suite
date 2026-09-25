@@ -1,0 +1,1 @@
+{"name":"time and environment foundation","kind":"compile","source":"time-env.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"works\n1\n1\ngone\n","run_stderr":""}
