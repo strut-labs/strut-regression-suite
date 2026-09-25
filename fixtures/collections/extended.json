@@ -1,0 +1,1 @@
+{"name":"extended collection helpers","kind":"compile","source":"extended.p","run":true,"run_stdout":"2\n5\n4\n{\"a\":1}\n{\"nested\":{\"x\":1}}\n{\"a\":1,\"nested\":{\"x\":1,\"y\":2},\"b\":2}\n"}
