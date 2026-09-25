@@ -1,0 +1,1 @@
+{"name":"incompatible assignment rejected","kind":"compile","source":"incompatible-assignment.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["incompatible assignment to 'x'"],"run":false}

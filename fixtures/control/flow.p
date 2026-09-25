@@ -1,7 +1,10 @@
+ready := true;
+x := 3;
+items := null;
 if (ready) {
-    x := 1;
+    x = 1;
 } else {
-    x := 2;
+    x = 2;
 }
 while (x > 0) {
     x--;

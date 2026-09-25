@@ -1,0 +1,1 @@
+{"name":"const assignment rejected","kind":"compile","source":"const-assignment.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["cannot assign to const value 'x'"],"run":false}

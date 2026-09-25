@@ -1,0 +1,1 @@
+{"name":"core type inference and compatibility","kind":"compile","source":"core-typing.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
