@@ -1,0 +1,1 @@
+{"name":"expression precedence and access","kind":"compile","source":"operators.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
