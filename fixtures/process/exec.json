@@ -1,0 +1,15 @@
+{
+  "name": "safe argv exec capture options and inherited stdio",
+  "kind": "compile",
+  "source": "exec.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "inherited\n7\nalpha|two words\nworks\nTrue\n\nhelper-error\n\n0\n",
+  "run_stderr": "",
+  "run_env": {
+    "STRUT_TEST_PYTHON": "{python}",
+    "STRUT_TEST_HELPER": "{fixture_dir}/exec-helper.py",
+    "STRUT_TEST_CWD": "{tmp}"
+  }
+}

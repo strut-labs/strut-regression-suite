@@ -70,7 +70,19 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
 
         raw_run_command = case.get("run_command", ["{artifact}"])
         run_command = [arg.replace("{artifact}", str(artifact)) for arg in raw_run_command]
-        run_proc = subprocess.run(run_command, text=True, capture_output=True, check=False)
+        run_env = os.environ.copy()
+        replacements = {
+            "{artifact}": str(artifact),
+            "{fixture_dir}": str(case_path.parent.resolve()),
+            "{python}": sys.executable,
+            "{tmp}": str(Path(tmp).resolve()),
+        }
+        for key, value in case.get("run_env", {}).items():
+            rendered = value
+            for marker, replacement in replacements.items():
+                rendered = rendered.replace(marker, replacement)
+            run_env[key] = rendered
+        run_proc = subprocess.run(run_command, text=True, capture_output=True, check=False, env=run_env)
         run_failures = check_process(run_proc, case, "run_")
         return (not run_failures, "; ".join(run_failures))
 
