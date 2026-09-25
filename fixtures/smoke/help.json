@@ -1,0 +1,8 @@
+{
+  "name": "cli help",
+  "kind": "cli",
+  "args": ["--help"],
+  "exit": 0,
+  "stdout_contains": ["Strut", "Usage: strut", "--version"],
+  "stderr": ""
+}

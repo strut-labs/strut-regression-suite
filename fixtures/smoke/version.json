@@ -1,0 +1,8 @@
+{
+  "name": "cli version",
+  "kind": "cli",
+  "args": ["--version"],
+  "exit": 0,
+  "stdout_contains": ["strut 0.0.0-dev"],
+  "stderr": ""
+}
