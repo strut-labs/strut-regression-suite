@@ -1,0 +1,1 @@
+{"name":"normal operator overload","kind":"compile","source":"normal.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"5\n","run_stderr":""}
