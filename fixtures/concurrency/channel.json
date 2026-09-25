@@ -1,0 +1,1 @@
+{"name":"typed channel send receive close","kind":"compile","source":"channel.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"7\n1\n","run_stderr":""}
