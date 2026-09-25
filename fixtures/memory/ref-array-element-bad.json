@@ -1,0 +1,1 @@
+{"name":"dynamic array element borrow rejected","kind":"compile","source":"ref-array-element-bad.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["cannot borrow a dynamic-array element"]}
