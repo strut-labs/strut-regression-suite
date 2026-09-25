@@ -1,0 +1,10 @@
+{
+  "name": "typed try catch handles checked error",
+  "kind": "compile",
+  "source": "try-catch.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "caught\n",
+  "run_stderr": ""
+}
