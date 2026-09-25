@@ -8,6 +8,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from typing import Sequence
 
 ROOT = Path(__file__).resolve().parent
@@ -168,7 +169,7 @@ def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool,
     kind = case.get("kind")
     if kind == "cli":
         return run_cli_case(compiler_cmd, case)
-    if kind == "compile":
+    if kind in {"compile", "compile_fail"}:
         return run_compile_case(compiler_cmd, path, case)
     if kind == "incremental":
         return run_incremental_case(compiler_cmd, path, case)
@@ -183,6 +184,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run independent Strut regressions")
     parser.add_argument("--compiler", type=Path, default=os.environ.get("STRUT_BIN"))
     parser.add_argument("--filter", default="", help="run only cases whose name/path contains this substring")
+    parser.add_argument("--jobs", type=int, default=1, help="run independent cases in parallel")
     args = parser.parse_args()
 
     if args.compiler is None:
@@ -199,9 +201,21 @@ def main() -> int:
         print("no regression cases found", file=sys.stderr)
         return 2
 
-    failed = 0
-    for path, case in cases:
+    def execute(item):
+        path, case = item
         ok, message = run_case([str(compiler)], path, case)
+        return path, case, ok, message
+
+    if args.jobs < 1:
+        parser.error("--jobs must be >= 1")
+    if args.jobs == 1:
+        results = [execute(item) for item in cases]
+    else:
+        with ThreadPoolExecutor(max_workers=args.jobs) as pool:
+            results = list(pool.map(execute, cases))
+
+    failed = 0
+    for path, case, ok, message in results:
         if ok:
             print(f"PASS {case.get('name', path.stem)}")
         else:

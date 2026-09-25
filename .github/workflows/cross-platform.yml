@@ -1,0 +1,47 @@
+name: Cross-platform Strut regressions
+
+on:
+  workflow_dispatch:
+    inputs:
+      compiler_ref:
+        description: strut compiler git ref
+        required: false
+        default: main
+
+jobs:
+  regressions:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            name: linux-x64
+          - os: macos-14
+            name: macos-arm64
+          - os: windows-2022
+            name: windows-x64
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    steps:
+      - name: Checkout regression suite
+        uses: actions/checkout@v4
+        with:
+          path: strut-regression-suite
+      - name: Checkout compiler
+        uses: actions/checkout@v4
+        with:
+          repository: strut-labs/strut
+          ref: ${{ inputs.compiler_ref || 'main' }}
+          path: strut
+      - name: Configure compiler
+        run: cmake -S strut -B strut/build -DSTRUT_WARNINGS_AS_ERRORS=ON
+      - name: Build compiler
+        run: cmake --build strut/build --config Release --parallel
+      - name: Run regressions (POSIX)
+        if: runner.os != 'Windows'
+        run: python3 strut-regression-suite/runner.py --compiler strut/build/strut --jobs 2
+      - name: Run regressions (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: python strut-regression-suite/runner.py --compiler strut/build/Release/strut.exe --jobs 2
