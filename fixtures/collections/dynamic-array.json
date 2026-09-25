@@ -1,0 +1,1 @@
+{"name":"dynamic arrays","kind":"compile","source":"dynamic-array.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n2\n3\n4\n4\n1\n","run_stderr":""}
