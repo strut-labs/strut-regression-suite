@@ -1,0 +1,1 @@
+{"name":"exhaustive enum match","kind":"compile","source":"match.p","run":true,"run_stdout":"r\n"}

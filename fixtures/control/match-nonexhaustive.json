@@ -1,0 +1,1 @@
+{"name":"non exhaustive enum match rejected","kind":"compile","source":"match-nonexhaustive.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["non-exhaustive enum match","running"]}
