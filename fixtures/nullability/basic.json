@@ -1,0 +1,7 @@
+{
+  "name": "nullability safe access and narrowing",
+  "kind": "compile",
+  "source": "basic.p",
+  "run": true,
+  "run_stdout": "none\nNick\n"
+}

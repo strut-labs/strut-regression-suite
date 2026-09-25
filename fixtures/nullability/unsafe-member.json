@@ -1,0 +1,7 @@
+{
+  "name": "nullable direct member access rejected",
+  "kind": "compile",
+  "source": "unsafe-member.p",
+  "compile_exit": 1,
+  "compile_stderr_contains": ["cannot access member of nullable value"]
+}
