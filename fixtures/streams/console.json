@@ -1,0 +1,1 @@
+{"name":"console streams insertion and user overload","kind":"compile","source":"console.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"hello, world!\nline\n7\n","run_stderr":"error-stream\n"}
