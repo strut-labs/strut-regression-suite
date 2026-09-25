@@ -1,0 +1,1 @@
+{"name":"checked error signature and propagation","kind":"compile","source":"checked-ok.p","compile_args":["--check","{source}"],"compile_exit":0}
