@@ -1,0 +1,1 @@
+{"name":"fixed array size mismatch","kind":"compile","source":"fixed-array-bad.p","compile_exit":1,"compile_stderr_contains":["fixed array initializer has 3 elements but type requires 2"]}
