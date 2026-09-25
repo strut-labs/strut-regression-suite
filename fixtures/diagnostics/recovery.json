@@ -1,0 +1,1 @@
+{"name":"parser diagnostic source location","kind":"compile","source":"recovery.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":[":2:1: error: expected ';' after statement"],"run":false}
