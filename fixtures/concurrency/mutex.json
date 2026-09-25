@@ -1,0 +1,1 @@
+{"name":"mutex explicit and scoped locking","kind":"compile","source":"mutex.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"3\n","run_stderr":""}
