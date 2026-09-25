@@ -1,9 +1,38 @@
-# Regression coverage audit — CP92
+# Regression coverage audit — CP109
 
-The independent suite is black-box coverage of shipped Strut behaviour. Compiler unit tests remain separate.
+The independent suite is black-box coverage of shipped Strut behaviour. Compiler unit tests remain separate and are not a substitute for invoking Strut as a user would.
 
-Covered families include lexer/literals, declarations and expressions, control flow, functions/lambdas/generics, arrays/maps/strings/JSON/structs, nullability, pointer/reference/weak/raw memory rules, operators, checked errors, includes/contracts/enums/switch/match, streams/filesystem/processes, threads/mutexes/channels/async, TCP/TLS/HTTP, SQLite, embedding/static serving, formatter, incremental object invalidation, multi-file project builds, and local package resolution.
+| Area | Black-box coverage |
+| --- | --- |
+| Lexing, literals, parser diagnostics | yes |
+| Declarations, aliases, expressions, control flow | yes |
+| Functions, lambdas, generics, operators | yes |
+| Arrays, maps, strings, JSON, structs, enums | yes |
+| Nullability, `ptr`, `ref`, `weak_ptr`, raw/unsafe | yes |
+| Checked errors / try-catch | yes |
+| Includes, contracts, package includes | yes |
+| Filesystem, streams, environment, process APIs | yes |
+| Threads, mutexes, channels, async | yes |
+| TCP, TLS client, HTTP client/server | yes |
+| SQLite, embedding, static assets | yes |
+| Formatter and CLI workflows | yes |
+| Incremental `.o` / `.info.json` invalidation | yes |
+| Multi-file project build | yes |
+| Local package add/install/include | yes |
+| LSP command surface | yes |
 
-Negative fixtures intentionally cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread reference policy.
+Negative fixtures cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread-reference policy.
 
-CP92 adds the first whole-project fixture (`strut init` + `strut make`) and package-project fixture (`strut add` + `include <package>`), plus a cross-platform GitHub Actions matrix. Future checkpoints must add at least one black-box fixture for every externally visible feature or bug fix.
+## Real-project fixtures
+
+The suite contains whole-project flows rather than only isolated files:
+
+- `strut init` + `strut make` project build,
+- local package add/cache/include/build,
+- incremental object invalidation across multiple source/dependency files.
+
+## Execution
+
+`runner.py` remains Python-standard-library only. `--jobs N` allows independent cases to run concurrently, while output remains deterministic in fixture order. `--timeout SECONDS` prevents a hung compiler/generated program from hanging CI indefinitely. A manually dispatchable GitHub Actions matrix runs the black-box suite on Linux x64, macOS arm64 and Windows x64 against a chosen compiler ref.
+
+See `COMPATIBILITY.md` for release-baseline policy.

@@ -1,0 +1,1 @@
+{"name":"lsp command help","kind":"cli","args":["help","lsp"],"exit":0,"stdout_contains":["Usage: strut lsp","LSP server"]}

@@ -12,6 +12,12 @@ from concurrent.futures import ThreadPoolExecutor
 from typing import Sequence
 
 ROOT = Path(__file__).resolve().parent
+PROCESS_TIMEOUT = 90.0
+
+def run_process(*args, **kwargs):
+    kwargs.setdefault("timeout", PROCESS_TIMEOUT)
+    return subprocess.run(*args, **kwargs)
+
 
 
 def load_cases(root: Path = ROOT) -> list[tuple[Path, dict]]:
@@ -45,7 +51,7 @@ def check_process(proc: subprocess.CompletedProcess[str], case: dict, prefix: st
 
 
 def run_cli_case(compiler_cmd: Sequence[str], case: dict) -> tuple[bool, str]:
-    proc = subprocess.run([*compiler_cmd, *case.get("args", [])], text=True, capture_output=True, check=False)
+    proc = run_process([*compiler_cmd, *case.get("args", [])], text=True, capture_output=True, check=False)
     failures = check_process(proc, case)
     return (not failures, "; ".join(failures))
 
@@ -59,7 +65,7 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
         artifact = Path(tmp) / case.get("artifact", "program")
         compile_args = [arg.replace("{source}", str(source)).replace("{artifact}", str(artifact))
                         for arg in case.get("compile_args", ["{source}", "-o", "{artifact}"])]
-        proc = subprocess.run([*compiler_cmd, *compile_args], text=True, capture_output=True, check=False)
+        proc = run_process([*compiler_cmd, *compile_args], text=True, capture_output=True, check=False)
         failures = check_process(proc, case, "compile_")
         if failures:
             return False, "; ".join(failures)
@@ -83,7 +89,7 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
             for marker, replacement in replacements.items():
                 rendered = rendered.replace(marker, replacement)
             run_env[key] = rendered
-        run_proc = subprocess.run(run_command, text=True, capture_output=True, check=False, env=run_env)
+        run_proc = run_process(run_command, text=True, capture_output=True, check=False, env=run_env)
         run_failures = check_process(run_proc, case, "run_")
         return (not run_failures, "; ".join(run_failures))
 
@@ -94,23 +100,23 @@ def run_incremental_case(compiler_cmd: Sequence[str], case_path: Path, case: dic
     with tempfile.TemporaryDirectory(prefix="strut-incremental-") as tmp_s:
         root=Path(tmp_s)
         for name in [*case.get("sources",[]),case["dependency"]]: shutil.copy2(case_path.parent/name,root/name)
-        init=subprocess.run([*compiler_cmd,"init"],cwd=root,text=True,capture_output=True,check=False)
+        init=run_process([*compiler_cmd,"init"],cwd=root,text=True,capture_output=True,check=False)
         if init.returncode!=0: return False,f"init failed: {init.stderr}"
         mtimes={}
         for src in case["sources"]:
             out=root/Path(src).stem
-            proc=subprocess.run([*compiler_cmd,src,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
+            proc=run_process([*compiler_cmd,src,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
             if proc.returncode!=0: return False,f"initial {src} failed: {proc.stderr}"
             obj=root/".strut"/"obj"/"native"/"debug"/(Path(src).stem+ (".obj" if os.name=="nt" else ".o"))
             mtimes[src]=obj.stat().st_mtime_ns
         a=case["sources"][0]; out=root/Path(a).stem
-        proc=subprocess.run([*compiler_cmd,a,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
+        proc=run_process([*compiler_cmd,a,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
         if proc.returncode!=0 or "reuse " not in proc.stdout: return False,"unchanged object was not reused"
         time.sleep(1.05); dep=root/case["dependency"]; dep.touch()
         changed=[]
         for src in case["sources"]:
             out=root/Path(src).stem
-            proc=subprocess.run([*compiler_cmd,src,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
+            proc=run_process([*compiler_cmd,src,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
             if proc.returncode!=0: return False,f"rebuild {src} failed: {proc.stderr}"
             obj=root/".strut"/"obj"/"native"/"debug"/(Path(src).stem+ (".obj" if os.name=="nt" else ".o"))
             changed.append(obj.stat().st_mtime_ns != mtimes[src])
@@ -125,14 +131,14 @@ def run_formatter_case(compiler_cmd: Sequence[str], case_path: Path, case: dict)
         source = root / case["source"]
         source.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(case_path.parent / case["source"], source)
-        proc = subprocess.run([*compiler_cmd, "fmt", str(source)], text=True, capture_output=True, check=False)
+        proc = run_process([*compiler_cmd, "fmt", str(source)], text=True, capture_output=True, check=False)
         if proc.returncode != 0:
             return False, f"fmt failed: {proc.stderr}"
         first = source.read_text(encoding="utf-8")
         expected = (case_path.parent / case["expected"]).read_text(encoding="utf-8")
         if first != expected:
             return False, f"formatted output did not match expected: {first!r}"
-        proc2 = subprocess.run([*compiler_cmd, "fmt", "--check", str(source)], text=True, capture_output=True, check=False)
+        proc2 = run_process([*compiler_cmd, "fmt", "--check", str(source)], text=True, capture_output=True, check=False)
         if proc2.returncode != 0:
             return False, "formatter was not idempotent/clean under --check"
         return True, ""
@@ -150,7 +156,7 @@ def run_project_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
             env["STRUT_HOME"] = str(root / "strut-home")
         for step in case.get("steps", []):
             args = [str(a).replace("{project}", str(project)).replace("{tmp}", str(root)) for a in step.get("args", [])]
-            proc = subprocess.run([*compiler_cmd, *args], cwd=project, text=True, capture_output=True, check=False, env=env)
+            proc = run_process([*compiler_cmd, *args], cwd=project, text=True, capture_output=True, check=False, env=env)
             failures = check_process(proc, step)
             if failures:
                 return False, f"step {args}: {'; '.join(failures)}"
@@ -159,7 +165,7 @@ def run_project_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
             artifact = project / run_artifact
             if not artifact.exists():
                 return False, f"project artifact not found: {artifact}"
-            proc = subprocess.run([str(artifact)], cwd=project, text=True, capture_output=True, check=False, env=env)
+            proc = run_process([str(artifact)], cwd=project, text=True, capture_output=True, check=False, env=env)
             failures = check_process(proc, case, "run_")
             if failures:
                 return False, "; ".join(failures)
@@ -185,10 +191,13 @@ def main() -> int:
     parser.add_argument("--compiler", type=Path, default=os.environ.get("STRUT_BIN"))
     parser.add_argument("--filter", default="", help="run only cases whose name/path contains this substring")
     parser.add_argument("--jobs", type=int, default=1, help="run independent cases in parallel")
+    parser.add_argument("--timeout", type=float, default=90.0, help="per subprocess timeout in seconds")
     args = parser.parse_args()
 
     if args.compiler is None:
         parser.error("--compiler or STRUT_BIN is required")
+    global PROCESS_TIMEOUT
+    PROCESS_TIMEOUT = args.timeout
     compiler = args.compiler.resolve()
     if not compiler.exists():
         parser.error(f"compiler not found: {compiler}")
@@ -203,7 +212,12 @@ def main() -> int:
 
     def execute(item):
         path, case = item
-        ok, message = run_case([str(compiler)], path, case)
+        try:
+            ok, message = run_case([str(compiler)], path, case)
+        except subprocess.TimeoutExpired as exc:
+            return path, case, False, f"timeout after {exc.timeout}s"
+        except Exception as exc:
+            return path, case, False, f"runner exception: {exc}"
         return path, case, ok, message
 
     if args.jobs < 1:
