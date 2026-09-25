@@ -1,0 +1,17 @@
+{
+  "name": "lexer skeleton",
+  "kind": "compile",
+  "source": "skeleton.p",
+  "compile_args": ["--dump-tokens", "{source}"],
+  "compile_exit": 0,
+  "compile_stdout_contains": [
+    "2:1 keyword \"function\"",
+    "identifier \"main\"",
+    "operator \"->\"",
+    "keyword \"void\"",
+    "keyword \"return\"",
+    "eof"
+  ],
+  "compile_stderr": "",
+  "run": false
+}

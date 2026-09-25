@@ -1,0 +1,9 @@
+{
+  "name": "unterminated block comment diagnostic",
+  "kind": "compile",
+  "source": "unterminated-comment.p",
+  "compile_args": ["--dump-tokens", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": [":2:5: error: unterminated block comment"],
+  "run": false
+}
