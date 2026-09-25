@@ -1,0 +1,1 @@
+{"name":"external method satisfies contract","kind":"compile","source":"external-definition.p","run":true,"run_stdout":"1\n"}

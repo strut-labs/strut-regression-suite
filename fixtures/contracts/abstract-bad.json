@@ -1,0 +1,1 @@
+{"name":"abstract struct cannot instantiate","kind":"compile","source":"abstract-bad.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["cannot instantiate abstract struct Shape","area"]}
