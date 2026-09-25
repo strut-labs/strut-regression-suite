@@ -1,0 +1,1 @@
+{"name":"sqlite prepared query runs","kind":"compile","source":"sqlite.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"[{\"text\":\"hello\"}]\n"}

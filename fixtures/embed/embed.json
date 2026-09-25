@@ -1,0 +1,1 @@
+{"name":"compile-time file embedding runs without source asset","kind":"compile","source":"embed.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"embedded regression\n\n"}
