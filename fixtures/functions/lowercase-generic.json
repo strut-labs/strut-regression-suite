@@ -1,0 +1,1 @@
+{"name":"generic identifiers uppercase","kind":"compile","source":"lowercase-generic.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["generic parameter names must be uppercase"],"run":false}
