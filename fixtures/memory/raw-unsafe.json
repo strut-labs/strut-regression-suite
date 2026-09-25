@@ -1,0 +1,1 @@
+{"name":"unsafe raw pointer access","kind":"compile","source":"raw-unsafe.p","run":true,"run_stdout":"7\n9\n"}
