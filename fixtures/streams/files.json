@@ -1,0 +1,1 @@
+{"name":"file stream open close and io","kind":"compile","source":"files.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"hello\n","run_stderr":""}
