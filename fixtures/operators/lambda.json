@@ -1,0 +1,1 @@
+{"name":"lambda operator overload","kind":"compile","source":"lambda.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"9\n","run_stderr":""}
