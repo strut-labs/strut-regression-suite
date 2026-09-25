@@ -1,0 +1,1 @@
+{"name":"mandatory semicolon","kind":"compile","source":"missing-semicolon.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["error: expected ';' after statement"],"run":false}

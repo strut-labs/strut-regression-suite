@@ -1,0 +1,1 @@
+{"name":"declarations and assignment","kind":"compile","source":"declarations.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
