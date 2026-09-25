@@ -3,6 +3,8 @@ function main() -> void {
     print(scores["alice"]);
     print(scores.contains("bob"));
     scores.remove("bob");
+    scores.insert("carol", 30);
+    print(scores["carol"]);
     print(scores.length());
     return;
 }

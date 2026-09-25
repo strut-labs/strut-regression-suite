@@ -1,0 +1,1 @@
+{"name":"struct construction and methods","kind":"compile","source":"structs.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"Nick\nNick#7\n6\n","run_stderr":""}
