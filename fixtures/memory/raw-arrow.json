@@ -1,0 +1,7 @@
+{
+  "name": "raw pointer arrow member access",
+  "kind": "compile",
+  "source": "raw-arrow.p",
+  "run": true,
+  "run_stdout": "Ada\n"
+}
