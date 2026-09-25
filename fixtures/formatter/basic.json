@@ -1,0 +1,6 @@
+{
+  "name": "formatter canonical/idempotent",
+  "kind": "formatter",
+  "source": "basic.p",
+  "expected": "basic.expected.p"
+}

@@ -116,6 +116,26 @@ def run_incremental_case(compiler_cmd: Sequence[str], case_path: Path, case: dic
         if changed != [True,False]: return False,f"expected only first object to rebuild, got {changed}"
         return True,""
 
+
+def run_formatter_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -> tuple[bool, str]:
+    import shutil
+    with tempfile.TemporaryDirectory(prefix="strut-format-") as tmp_s:
+        root = Path(tmp_s)
+        source = root / case["source"]
+        source.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(case_path.parent / case["source"], source)
+        proc = subprocess.run([*compiler_cmd, "fmt", str(source)], text=True, capture_output=True, check=False)
+        if proc.returncode != 0:
+            return False, f"fmt failed: {proc.stderr}"
+        first = source.read_text(encoding="utf-8")
+        expected = (case_path.parent / case["expected"]).read_text(encoding="utf-8")
+        if first != expected:
+            return False, f"formatted output did not match expected: {first!r}"
+        proc2 = subprocess.run([*compiler_cmd, "fmt", "--check", str(source)], text=True, capture_output=True, check=False)
+        if proc2.returncode != 0:
+            return False, "formatter was not idempotent/clean under --check"
+        return True, ""
+
 def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool, str]:
     kind = case.get("kind")
     if kind == "cli":
@@ -124,6 +144,8 @@ def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool,
         return run_compile_case(compiler_cmd, path, case)
     if kind == "incremental":
         return run_incremental_case(compiler_cmd, path, case)
+    if kind == "formatter":
+        return run_formatter_case(compiler_cmd, path, case)
     return False, f"unsupported case kind {kind!r}"
 
 
