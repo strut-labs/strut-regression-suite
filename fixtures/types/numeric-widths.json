@@ -1,0 +1,1 @@
+{"name":"numeric width types","kind":"compile","source":"numeric-widths.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
