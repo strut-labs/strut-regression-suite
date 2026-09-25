@@ -1,0 +1,1 @@
+{"name":"ref temporary rejected","kind":"compile","source":"ref-temp-bad.p","compile_exit":1,"compile_stderr_contains":["ref(...) requires an lvalue"]}

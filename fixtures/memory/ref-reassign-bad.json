@@ -1,0 +1,1 @@
+{"name":"ref binding cannot be reassigned","kind":"compile","source":"ref-reassign-bad.p","compile_exit":1,"compile_stderr_contains":["ref<T> bindings cannot be reassigned"]}

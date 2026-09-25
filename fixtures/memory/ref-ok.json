@@ -1,0 +1,1 @@
+{"name":"safe non owning ref borrow","kind":"compile","source":"ref-ok.p","run":true,"run_stdout":"8\n"}
