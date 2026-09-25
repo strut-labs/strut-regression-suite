@@ -1,0 +1,1 @@
+{"name":"switch implicit no fallthrough","kind":"compile","source":"switch.p","run":true,"run_stdout":"two\n"}
