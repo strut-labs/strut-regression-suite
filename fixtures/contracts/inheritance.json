@@ -1,0 +1,1 @@
+{"name":"one concrete base plus contract","kind":"compile","source":"inheritance.p","run":true,"run_stdout":"Nick\n"}

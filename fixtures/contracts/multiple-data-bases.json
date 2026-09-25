@@ -1,0 +1,1 @@
+{"name":"multiple data bases rejected","kind":"compile","source":"multiple-data-bases.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["multiple data-bearing base structs"]}
