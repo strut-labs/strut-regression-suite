@@ -1,0 +1,9 @@
+{
+  "name": "malformed floating exponent",
+  "kind": "compile",
+  "source": "bad-exponent.p",
+  "compile_args": ["--dump-tokens", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": [":1:1: error: malformed floating literal: exponent requires digits"],
+  "run": false
+}

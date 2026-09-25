@@ -1,0 +1,9 @@
+{
+  "name": "invalid string escape",
+  "kind": "compile",
+  "source": "bad-escape.p",
+  "compile_args": ["--dump-tokens", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": [":1:5: error: invalid string escape character 'q'"],
+  "run": false
+}

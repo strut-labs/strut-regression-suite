@@ -1,0 +1,19 @@
+{
+  "name": "primitive literals",
+  "kind": "compile",
+  "source": "all.p",
+  "compile_args": ["--dump-tokens", "{source}"],
+  "compile_exit": 0,
+  "compile_stdout_contains": [
+    "integer \"42\"",
+    "floating \"3.14\"",
+    "floating \"1e3\"",
+    "floating \"2.5e-2\"",
+    "string \"\\\"hello\\\\nworld\\\\\\\"\\\"\"",
+    "boolean \"true\"",
+    "boolean \"false\"",
+    "null \"null\""
+  ],
+  "compile_stderr": "",
+  "run": false
+}
