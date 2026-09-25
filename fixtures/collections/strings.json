@@ -1,0 +1,1 @@
+{"name":"strings and from_chars conversions","kind":"compile","source":"strings.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"hello\n1\na-b-c\n43\n2.5\n","run_stderr":""}
