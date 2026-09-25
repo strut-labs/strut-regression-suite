@@ -1,0 +1,6 @@
+{
+  "name": "incremental object invalidation",
+  "kind": "incremental",
+  "sources": ["a.p", "b.p"],
+  "dependency": "common.h"
+}

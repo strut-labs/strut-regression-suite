@@ -87,12 +87,43 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
         return (not run_failures, "; ".join(run_failures))
 
 
+
+def run_incremental_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -> tuple[bool, str]:
+    import shutil, time
+    with tempfile.TemporaryDirectory(prefix="strut-incremental-") as tmp_s:
+        root=Path(tmp_s)
+        for name in [*case.get("sources",[]),case["dependency"]]: shutil.copy2(case_path.parent/name,root/name)
+        init=subprocess.run([*compiler_cmd,"init"],cwd=root,text=True,capture_output=True,check=False)
+        if init.returncode!=0: return False,f"init failed: {init.stderr}"
+        mtimes={}
+        for src in case["sources"]:
+            out=root/Path(src).stem
+            proc=subprocess.run([*compiler_cmd,src,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
+            if proc.returncode!=0: return False,f"initial {src} failed: {proc.stderr}"
+            obj=root/".strut"/"obj"/"native"/"debug"/(Path(src).stem+ (".obj" if os.name=="nt" else ".o"))
+            mtimes[src]=obj.stat().st_mtime_ns
+        a=case["sources"][0]; out=root/Path(a).stem
+        proc=subprocess.run([*compiler_cmd,a,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
+        if proc.returncode!=0 or "reuse " not in proc.stdout: return False,"unchanged object was not reused"
+        time.sleep(1.05); dep=root/case["dependency"]; dep.touch()
+        changed=[]
+        for src in case["sources"]:
+            out=root/Path(src).stem
+            proc=subprocess.run([*compiler_cmd,src,"-o",str(out),"--verbose"],cwd=root,text=True,capture_output=True,check=False)
+            if proc.returncode!=0: return False,f"rebuild {src} failed: {proc.stderr}"
+            obj=root/".strut"/"obj"/"native"/"debug"/(Path(src).stem+ (".obj" if os.name=="nt" else ".o"))
+            changed.append(obj.stat().st_mtime_ns != mtimes[src])
+        if changed != [True,False]: return False,f"expected only first object to rebuild, got {changed}"
+        return True,""
+
 def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool, str]:
     kind = case.get("kind")
     if kind == "cli":
         return run_cli_case(compiler_cmd, case)
     if kind == "compile":
         return run_compile_case(compiler_cmd, path, case)
+    if kind == "incremental":
+        return run_incremental_case(compiler_cmd, path, case)
     return False, f"unsupported case kind {kind!r}"
 
 
