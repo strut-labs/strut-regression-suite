@@ -1,0 +1,1 @@
+{"name":"direct ref thread argument rejected","kind":"cli","args":["--check","fixtures/concurrency/thread-ref-bad.p"],"exit":1,"stderr_contains":["ref<T> cannot be passed directly across a thread boundary"]}
