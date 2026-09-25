@@ -1,0 +1,1 @@
+{"name":"ptr to const rejects mutation","kind":"compile","source":"ptr-const-referent-bad.p","compile_exit":1,"compile_stderr_contains":["cannot modify through pointer to const value"]}

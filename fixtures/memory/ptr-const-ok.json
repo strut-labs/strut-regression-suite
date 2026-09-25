@@ -1,0 +1,1 @@
+{"name":"ptr referent and binding const valid cases","kind":"compile","source":"ptr-const-ok.p","run":true,"run_stdout":"8\n8\n8\n"}

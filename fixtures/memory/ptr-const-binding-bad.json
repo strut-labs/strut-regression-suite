@@ -1,0 +1,1 @@
+{"name":"const ptr binding rejects reassignment","kind":"compile","source":"ptr-const-binding-bad.p","compile_exit":1,"compile_stderr_contains":["cannot assign to const value 'p'"]}
