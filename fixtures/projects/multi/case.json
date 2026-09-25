@@ -1,0 +1,22 @@
+{
+  "name": "multi-file project init make run",
+  "kind": "project",
+  "project": "project",
+  "steps": [
+    {
+      "args": [
+        "init"
+      ],
+      "exit": 0
+    },
+    {
+      "args": [
+        "make"
+      ],
+      "exit": 0
+    }
+  ],
+  "run_artifact": "main",
+  "run_exit": 0,
+  "run_stdout": "42\n"
+}

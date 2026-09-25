@@ -136,6 +136,34 @@ def run_formatter_case(compiler_cmd: Sequence[str], case_path: Path, case: dict)
             return False, "formatter was not idempotent/clean under --check"
         return True, ""
 
+
+def run_project_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -> tuple[bool, str]:
+    import shutil
+    with tempfile.TemporaryDirectory(prefix="strut-project-") as tmp_s:
+        root = Path(tmp_s)
+        project_dir = case_path.parent / case["project"]
+        shutil.copytree(project_dir, root / "project")
+        project = root / "project"
+        env = os.environ.copy()
+        if case.get("isolated_strut_home", True):
+            env["STRUT_HOME"] = str(root / "strut-home")
+        for step in case.get("steps", []):
+            args = [str(a).replace("{project}", str(project)).replace("{tmp}", str(root)) for a in step.get("args", [])]
+            proc = subprocess.run([*compiler_cmd, *args], cwd=project, text=True, capture_output=True, check=False, env=env)
+            failures = check_process(proc, step)
+            if failures:
+                return False, f"step {args}: {'; '.join(failures)}"
+        run_artifact = case.get("run_artifact")
+        if run_artifact:
+            artifact = project / run_artifact
+            if not artifact.exists():
+                return False, f"project artifact not found: {artifact}"
+            proc = subprocess.run([str(artifact)], cwd=project, text=True, capture_output=True, check=False, env=env)
+            failures = check_process(proc, case, "run_")
+            if failures:
+                return False, "; ".join(failures)
+        return True, ""
+
 def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool, str]:
     kind = case.get("kind")
     if kind == "cli":
@@ -146,12 +174,15 @@ def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool,
         return run_incremental_case(compiler_cmd, path, case)
     if kind == "formatter":
         return run_formatter_case(compiler_cmd, path, case)
+    if kind == "project":
+        return run_project_case(compiler_cmd, path, case)
     return False, f"unsupported case kind {kind!r}"
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run independent Strut regressions")
     parser.add_argument("--compiler", type=Path, default=os.environ.get("STRUT_BIN"))
+    parser.add_argument("--filter", default="", help="run only cases whose name/path contains this substring")
     args = parser.parse_args()
 
     if args.compiler is None:
@@ -161,6 +192,9 @@ def main() -> int:
         parser.error(f"compiler not found: {compiler}")
 
     cases = load_cases()
+    if args.filter:
+        needle = args.filter.lower()
+        cases = [(p, c) for p, c in cases if needle in c.get("name", p.stem).lower() or needle in str(p).lower()]
     if not cases:
         print("no regression cases found", file=sys.stderr)
         return 2

@@ -1,0 +1,13 @@
+{
+  "name": "local package add include compile",
+  "kind": "project",
+  "project": "project",
+  "steps": [
+    {"args": ["init"], "exit": 0},
+    {"args": ["add", "pkg"], "exit": 0},
+    {"args": ["main.p", "-o", "app"], "exit": 0}
+  ],
+  "run_artifact": "app",
+  "run_exit": 0,
+  "run_stdout": "42\n"
+}
