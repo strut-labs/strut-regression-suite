@@ -1,0 +1,7 @@
+{
+  "name": "multithreaded async executor",
+  "kind": "compile",
+  "source": "executor.p",
+  "run": true,
+  "run_stdout": "5\n9\n"
+}
