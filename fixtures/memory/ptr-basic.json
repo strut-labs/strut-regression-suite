@@ -1,0 +1,1 @@
+{"name":"reference counted ptr basic ownership","kind":"compile","source":"ptr-basic.p","run":true,"run_stdout":"7\n7\n"}
