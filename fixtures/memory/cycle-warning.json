@@ -1,0 +1,1 @@
+{"name":"reference cycle warning prototype","kind":"cli","args":["--check","fixtures/memory/cycle-warning.p"],"exit":0,"stderr_contains":["possible reference cycle"]}

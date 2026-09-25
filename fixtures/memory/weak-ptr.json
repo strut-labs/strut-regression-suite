@@ -1,0 +1,1 @@
+{"name":"weak ptr upgrade and expiry","kind":"compile","source":"weak-ptr.p","run":true,"run_stdout":"7\n1\n"}
