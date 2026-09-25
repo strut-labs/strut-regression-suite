@@ -1,0 +1,1 @@
+{"name":"built-in json literals and equality","kind":"compile","source":"literals.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n2\n","run_stderr":""}
