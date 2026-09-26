@@ -1,0 +1,7 @@
+{
+  "name": "HTTP JSON result retains JSON indexing semantics",
+  "kind": "compile",
+  "source": "http-json-index.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}

@@ -1,0 +1,11 @@
+{
+  "name": "range loop in spelling suggests canonical colon syntax",
+  "kind": "compile_fail",
+  "source": "range-loop-in.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": [
+    "range loops use `:` rather than `in`",
+    "for (value : collection)"
+  ]
+}

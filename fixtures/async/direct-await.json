@@ -1,0 +1,7 @@
+{
+  "name": "await accepts a direct async call",
+  "kind": "compile",
+  "source": "direct-await.p",
+  "run": true,
+  "run_stdout": "42\n"
+}

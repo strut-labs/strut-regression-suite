@@ -1,0 +1,7 @@
+{
+  "name": "generic calls infer typed array literals",
+  "kind": "compile",
+  "source": "array-literal-call.p",
+  "run": true,
+  "run_stdout": "6\n"
+}
