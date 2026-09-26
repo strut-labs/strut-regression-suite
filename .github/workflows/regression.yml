@@ -33,7 +33,8 @@ jobs:
         shell: pwsh
         run: |
           vcpkg install curl:x64-windows sqlite3:x64-windows
-          $installed = "$env:VCPKG_ROOT\installed\x64-windows"
+          $vcpkgRoot = Split-Path -Parent (Get-Command vcpkg).Source
+          $installed = "$vcpkgRoot\installed\x64-windows"
           "INCLUDE=$env:INCLUDE;$installed\include" >> $env:GITHUB_ENV
           "LIB=$env:LIB;$installed\lib" >> $env:GITHUB_ENV
           "$installed\bin" >> $env:GITHUB_PATH
