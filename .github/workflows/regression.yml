@@ -24,22 +24,24 @@ jobs:
         if: runner.os == 'macOS'
         shell: bash
         run: |
-          brew install llvm
+          brew install llvm openssl@3
           echo "CC=$(brew --prefix llvm)/bin/clang" >> "$GITHUB_ENV"
           echo "CXX=$(brew --prefix llvm)/bin/clang++" >> "$GITHUB_ENV"
+          echo "CPATH=$(brew --prefix openssl@3)/include" >> "$GITHUB_ENV"
+          echo "LIBRARY_PATH=$(brew --prefix openssl@3)/lib" >> "$GITHUB_ENV"
       - name: Configure native dependencies (Ubuntu)
         if: runner.os == 'Linux'
         shell: bash
         run: |
           sudo apt-get update
-          sudo apt-get install --yes libcurl4-openssl-dev libsqlite3-dev
+          sudo apt-get install --yes libcurl4-openssl-dev libsqlite3-dev libssl-dev
           echo "STRUT_CXXFLAGS=$(pkg-config --cflags libcurl)" >> "$GITHUB_ENV"
           echo "STRUT_LDFLAGS=$(pkg-config --libs libcurl)" >> "$GITHUB_ENV"
       - name: Configure native dependencies (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          vcpkg install curl:x64-windows sqlite3:x64-windows
+          vcpkg install curl:x64-windows sqlite3:x64-windows openssl:x64-windows
           $vcpkgRoot = Split-Path -Parent (Get-Command vcpkg).Source
           $installed = "$vcpkgRoot\installed\x64-windows"
           "INCLUDE=$env:INCLUDE;$installed\include" >> $env:GITHUB_ENV
