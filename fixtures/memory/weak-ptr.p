@@ -1,5 +1,5 @@
 function main() -> void {
-    int* p := ptr(7);
+    int* p := new(7);
     weak_ptr<int> w := weak(p);
     q := w.lock();
     print(*q);

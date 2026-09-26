@@ -1,8 +1,8 @@
 struct User { string name; }
 function main() -> void {
-    owner := ptr(User { name: "Ada" });
+    owner := new(User { name: "Ada" });
     unsafe {
-        ptr<User> raw_user := raw(owner);
+        ptr<User> raw_user := ptr(owner);
         print(raw_user->name);
     }
 }

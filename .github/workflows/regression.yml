@@ -20,8 +20,27 @@ jobs:
       - name: Enable MSVC developer environment
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
-      - name: Configure Strut
+      - name: Install current LLVM/libc++ (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          brew install llvm
+          LLVM_PREFIX="$(brew --prefix llvm)"
+          echo "CXX=$LLVM_PREFIX/bin/clang++" >> "$GITHUB_ENV"
+          echo "STRUT_CXXFLAGS=-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1" >> "$GITHUB_ENV"
+          echo "STRUT_LDFLAGS=-L$LLVM_PREFIX/lib/c++ -Wl,-rpath,$LLVM_PREFIX/lib/c++" >> "$GITHUB_ENV"
+      - name: Configure Strut (non-macOS)
+        if: runner.os != 'macOS'
         run: cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release
+      - name: Configure Strut (macOS with current libc++)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          LLVM_PREFIX="$(brew --prefix llvm)"
+          cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER="$LLVM_PREFIX/bin/clang++" \
+            -DCMAKE_CXX_FLAGS="-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1" \
+            -DCMAKE_EXE_LINKER_FLAGS="-L$LLVM_PREFIX/lib/c++ -Wl,-rpath,$LLVM_PREFIX/lib/c++"
       - name: Build Strut
         run: cmake --build strut/build --config Release
       - name: Run regression suite (POSIX)

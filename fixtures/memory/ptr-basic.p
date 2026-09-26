@@ -1,5 +1,5 @@
 function main() -> void {
-    int* a := ptr(7);
+    int* a := new(7);
     int* b := a;
     print(*b);
     b = null;

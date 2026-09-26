@@ -1,5 +1,5 @@
 function main() -> void {
-    const int* p := ptr(7);
-    p = ptr(8);
+    const int* p := new(7);
+    p = new(8);
     return;
 }

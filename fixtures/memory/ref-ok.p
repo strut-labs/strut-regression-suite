@@ -3,7 +3,7 @@ function bump(int& x) -> void {
     return;
 }
 function main() -> void {
-    int* p := ptr(7);
+    int* p := new(7);
     int& r := ref(*p);
     bump(r);
     print(*p);

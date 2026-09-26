@@ -1,7 +1,7 @@
 function main() -> void {
-    int* p := ptr(7);
+    int* p := new(7);
     unsafe {
-        ptr<int> r := raw(p);
+        ptr<int> r := ptr(p);
         print(*r);
         *r = 9;
         print(*p);

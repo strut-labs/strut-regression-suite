@@ -1,1 +1,1 @@
-{"name":"raw pointer outside unsafe rejected","kind":"compile","source":"raw-outside-unsafe.p","compile_exit":1,"compile_stderr_contains":["raw(...) requires unsafe block","ptr<T> values may only be created inside unsafe blocks","ptr<T> dereference requires unsafe block"]}
+{"name":"raw pointer outside unsafe rejected","kind":"compile","source":"raw-outside-unsafe.p","compile_exit":1,"compile_stderr_contains":["ptr(...) requires unsafe block","ptr<T> values may only be created inside unsafe blocks","ptr<T> dereference requires unsafe block"]}

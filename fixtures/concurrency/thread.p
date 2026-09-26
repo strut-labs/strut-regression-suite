@@ -3,7 +3,7 @@ function work(int* value) -> void {
     return;
 }
 function main() -> void : ThreadError {
-    value := ptr(4);
+    value := new(4);
     worker := thread(work, value);
     worker.join();
     print(*value);

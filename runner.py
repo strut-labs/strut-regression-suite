@@ -24,7 +24,11 @@ def load_cases(root: Path = ROOT) -> list[tuple[Path, dict]]:
     cases: list[tuple[Path, dict]] = []
     for path in sorted((root / "fixtures").rglob("*.json")):
         with path.open("r", encoding="utf-8") as handle:
-            cases.append((path, json.load(handle)))
+            case = json.load(handle)
+        # Project/package manifests also use JSON under fixtures; they are inputs, not test cases.
+        if "kind" not in case:
+            continue
+        cases.append((path, case))
     return cases
 
 
@@ -51,7 +55,7 @@ def check_process(proc: subprocess.CompletedProcess[str], case: dict, prefix: st
 
 
 def run_cli_case(compiler_cmd: Sequence[str], case: dict) -> tuple[bool, str]:
-    proc = run_process([*compiler_cmd, *case.get("args", [])], text=True, capture_output=True, check=False)
+    proc = run_process([*compiler_cmd, *case.get("args", [])], cwd=ROOT, text=True, capture_output=True, check=False)
     failures = check_process(proc, case)
     return (not failures, "; ".join(failures))
 
@@ -65,7 +69,7 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
         artifact = Path(tmp) / case.get("artifact", "program")
         compile_args = [arg.replace("{source}", str(source)).replace("{artifact}", str(artifact))
                         for arg in case.get("compile_args", ["{source}", "-o", "{artifact}"])]
-        proc = run_process([*compiler_cmd, *compile_args], text=True, capture_output=True, check=False)
+        proc = run_process([*compiler_cmd, *compile_args], cwd=ROOT, text=True, capture_output=True, check=False)
         failures = check_process(proc, case, "compile_")
         if failures:
             return False, "; ".join(failures)

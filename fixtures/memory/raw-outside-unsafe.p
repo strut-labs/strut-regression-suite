@@ -1,6 +1,6 @@
 function main() -> void {
-    int* p := ptr(7);
-    ptr<int> r := raw(p);
+    int* p := new(7);
+    ptr<int> r := ptr(p);
     print(*r);
     return;
 }
