@@ -37,6 +37,10 @@ def check_process(proc: subprocess.CompletedProcess[str], case: dict, prefix: st
     expected_exit = case.get(f"{prefix}exit", 0)
     if proc.returncode != expected_exit:
         failures.append(f"{prefix}exit {proc.returncode} != {expected_exit}")
+        if proc.stdout:
+            failures.append(f"{prefix}stdout {proc.stdout!r}")
+        if proc.stderr:
+            failures.append(f"{prefix}stderr {proc.stderr!r}")
 
     exact_stdout = case.get(f"{prefix}stdout")
     if exact_stdout is not None and proc.stdout != exact_stdout:

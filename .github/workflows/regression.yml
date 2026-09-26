@@ -20,6 +20,10 @@ jobs:
       - name: Enable MSVC developer environment
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
+      - name: Configure native dependencies (Ubuntu)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: echo "STRUT_LDFLAGS=$(pkg-config --libs libcurl)" >> "$GITHUB_ENV"
       - name: Install current LLVM/libc++ (macOS)
         if: runner.os == 'macOS'
         shell: bash
@@ -27,7 +31,7 @@ jobs:
           brew install llvm
           LLVM_PREFIX="$(brew --prefix llvm)"
           echo "CXX=$LLVM_PREFIX/bin/clang++" >> "$GITHUB_ENV"
-          echo "STRUT_CXXFLAGS=-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1" >> "$GITHUB_ENV"
+          echo "STRUT_CXXFLAGS=-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1 -D_LIBCPP_DISABLE_AVAILABILITY" >> "$GITHUB_ENV"
           echo "STRUT_LDFLAGS=-L$LLVM_PREFIX/lib/c++ -Wl,-rpath,$LLVM_PREFIX/lib/c++" >> "$GITHUB_ENV"
       - name: Configure Strut (non-macOS)
         if: runner.os != 'macOS'
@@ -39,7 +43,7 @@ jobs:
           LLVM_PREFIX="$(brew --prefix llvm)"
           cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER="$LLVM_PREFIX/bin/clang++" \
-            -DCMAKE_CXX_FLAGS="-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1" \
+            -DCMAKE_CXX_FLAGS="-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1 -D_LIBCPP_DISABLE_AVAILABILITY" \
             -DCMAKE_EXE_LINKER_FLAGS="-L$LLVM_PREFIX/lib/c++ -Wl,-rpath,$LLVM_PREFIX/lib/c++"
       - name: Build Strut
         run: cmake --build strut/build --config Release
