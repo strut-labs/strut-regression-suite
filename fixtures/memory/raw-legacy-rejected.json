@@ -1,0 +1,1 @@
+{"name":"legacy raw conversion rejected","kind":"compile","source":"raw-legacy-rejected.p","compile_exit":1,"compile_stderr_contains":["raw(...) has been replaced by ptr(...) for raw pointer conversion"]}

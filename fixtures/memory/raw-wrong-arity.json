@@ -1,0 +1,1 @@
+{"name":"raw conversion rejects wrong arity","kind":"compile","source":"raw-wrong-arity.p","compile_exit":1,"compile_stderr_contains":["ptr(...) requires exactly one T* safe pointer"]}

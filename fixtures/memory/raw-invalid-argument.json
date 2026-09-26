@@ -1,0 +1,1 @@
+{"name":"raw conversion requires safe pointer","kind":"compile","source":"raw-invalid-argument.p","compile_exit":1,"compile_stderr_contains":["ptr(...) requires a T* safe pointer"]}
