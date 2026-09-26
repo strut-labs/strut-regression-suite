@@ -46,12 +46,6 @@ jobs:
         run: cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release
       - name: Build Strut
         run: cmake --build strut/build --config Release
-      - name: Diagnose generated executable startup (macOS)
-        if: runner.os == 'macOS'
-        shell: bash
-        run: |
-          strut/build/strut suite/fixtures/codegen/native.p -o /tmp/strut-native-smoke
-          lldb --batch -o run -o bt -- /tmp/strut-native-smoke
       - name: Run regression suite (POSIX)
         if: runner.os != 'Windows'
         run: python3 suite/runner.py --compiler strut/build/strut
