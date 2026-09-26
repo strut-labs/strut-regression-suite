@@ -1,0 +1,1 @@
+{"name":"custom checked error payload and typed catch","kind":"compile","source":"custom-checked.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"negative\n42\n","run_stderr":""}

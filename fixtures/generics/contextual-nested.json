@@ -1,0 +1,1 @@
+{"name":"contextual nested generic inference","kind":"compile","source":"contextual-nested.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"0\n2\n7\n","run_stderr":""}

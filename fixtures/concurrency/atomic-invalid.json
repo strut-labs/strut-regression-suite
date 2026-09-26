@@ -1,0 +1,1 @@
+{"name":"invalid atomic element and copy rejected","kind":"compile_fail","source":"atomic-invalid.p","compile_exit":1,"compile_stderr_contains":["atomic<T> requires one integer or bool scalar type","atomic values cannot be copied or moved"]}

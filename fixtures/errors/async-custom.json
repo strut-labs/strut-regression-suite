@@ -1,0 +1,1 @@
+{"name":"async function preserves custom checked error","kind":"compile","source":"async-custom.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"async\n8\n","run_stderr":""}

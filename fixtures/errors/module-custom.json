@@ -1,0 +1,1 @@
+{"name":"custom checked error crosses module boundary","kind":"compile","source":"module-custom.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"module\n9\n","run_stderr":""}

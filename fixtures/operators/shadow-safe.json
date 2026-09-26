@@ -1,0 +1,1 @@
+{"name":"operator struct literal does not shadow parameters","kind":"compile","source":"shadow-safe.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"-4\n","run_stderr":""}
