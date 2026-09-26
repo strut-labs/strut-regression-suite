@@ -1,0 +1,7 @@
+{
+  "name": "heterogeneous arrays report expected and found types",
+  "kind": "compile",
+  "source": "heterogeneous-array-diagnostic.p",
+  "compile_exit": 1,
+  "compile_stderr_contains": ["array literal element type mismatch: expected", "found string", "use one compatible element type"]
+}
