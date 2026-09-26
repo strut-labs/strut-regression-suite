@@ -1,3 +1,5 @@
+include <vector>;
+include <filesystem>;
 function main() -> void : FilesystemError {
     remove("strut-fs-fixture");
     make_dir("strut-fs-fixture");

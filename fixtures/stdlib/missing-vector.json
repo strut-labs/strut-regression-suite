@@ -1,0 +1,1 @@
+{"name":"vector module is explicit","kind":"compile","source":"missing-vector.p","compile_exit":1,"compile_stderr_contains":["requires include <vector>;"]}

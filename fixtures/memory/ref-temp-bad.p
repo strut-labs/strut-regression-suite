@@ -1,4 +1,4 @@
 function main() -> void {
-    ref<int> r := ref(7);
+    int& r := ref(7);
     return;
 }

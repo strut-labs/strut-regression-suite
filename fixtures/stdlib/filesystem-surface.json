@@ -1,0 +1,1 @@
+{"name":"filesystem metadata paths and bulk io","kind":"compile","source":"filesystem-surface.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"hello world\n1\n1\n11\na.txt\n.txt\na\n11\n2\n","run_stderr":""}

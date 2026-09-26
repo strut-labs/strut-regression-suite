@@ -1,3 +1,4 @@
+include <vector>;
 function main() -> void {
     int[] xs := [1,2,3,4];
     ys := xs.map((x) => x * 2);

@@ -1,0 +1,1 @@
+{"name":"prique migration diagnostic","kind":"compile_fail","source":"prique-renamed.p","compile_exit":1,"compile_stderr_contains":["renamed to 'priority_queue'"]}

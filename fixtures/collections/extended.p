@@ -1,3 +1,5 @@
+include <vector>;
+include <map>;
 function main() -> void {
     int[] xs := [1,2,3,4,5];
     counts := xs.count_by((x) => x % 2);

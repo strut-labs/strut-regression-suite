@@ -1,0 +1,1 @@
+{"name":"unsupported map hash key rejected by Strut","kind":"compile","source":"hash-key.p","compile_exit":1,"compile_stderr_contains":["is not hashable"]}

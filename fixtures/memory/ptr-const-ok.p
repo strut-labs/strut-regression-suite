@@ -1,10 +1,10 @@
 function main() -> void {
-    ptr<int> p := ptr(7);
+    int* p := ptr(7);
     *p = 8;
     print(*p);
-    const ptr<int> q := p;
+    const int* q := p;
     print(*q);
-    ptr<const int> r := p;
+    int* const r := p;
     print(*r);
     return;
 }

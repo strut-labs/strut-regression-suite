@@ -1,0 +1,1 @@
+{"name":"filesystem wildcard source operands","kind":"compile","source":"wildcard-fs.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n1\n0\n","run_stderr":""}

@@ -2,7 +2,7 @@ struct Point {
     int x;
 }
 
-operator <<(ref<ostream> stream, ref<const Point> point) -> ref<ostream> {
+operator <<(ostream& stream, Point& const point) -> ostream& {
     stream << point.x;
     return stream;
 }

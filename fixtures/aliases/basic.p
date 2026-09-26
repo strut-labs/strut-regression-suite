@@ -1,3 +1,4 @@
+include <vector>;
 type user_id := uint_64;
 type callback := function<(int, int) -> int>;
 type values := int_32[];

@@ -1,1 +1,1 @@
-{"name":"data race policy rejects ref crossing thread boundary","kind":"compile_fail","source":"thread-ref-policy.p","compile_exit":1,"stderr_contains":"ref<T> cannot be passed directly across a thread boundary"}
+{"name":"data race policy rejects ref crossing thread boundary","kind":"compile_fail","source":"thread-ref-policy.p","compile_exit":1,"stderr_contains":"T& cannot be passed directly across a thread boundary"}

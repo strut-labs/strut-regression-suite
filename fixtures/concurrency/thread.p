@@ -1,4 +1,4 @@
-function work(ptr<int> value) -> void {
+function work(int* value) -> void {
     *value = *value + 1;
     return;
 }

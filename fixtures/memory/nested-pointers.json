@@ -1,0 +1,1 @@
+{"name":"recursive safe pointers and reference-to-pointer","kind":"compile","source":"nested-pointers.p","run":true,"run_stdout":"7\n9\n10\n10\n"}

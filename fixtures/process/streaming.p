@@ -1,3 +1,4 @@
+include <vector>;
 function main() -> void : ExecError {
     program := env("STRUT_TEST_PYTHON") ?? "";
     script := env("STRUT_TEST_HELPER") ?? "";

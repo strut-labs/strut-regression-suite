@@ -1,0 +1,1 @@
+{"name":"tuple literals including one element","kind":"compile","source":"tuple.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"2\n1\n7\n","run_stderr":""}

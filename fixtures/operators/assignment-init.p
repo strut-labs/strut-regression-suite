@@ -3,7 +3,7 @@ struct Widget { int value; }
 operator :=(Widget dst, Config src) -> void {
     dst.value = src.value;
 }
-operator =(ref<Widget> dst, Config src) -> void {
+operator =(Widget& dst, Config src) -> void {
     dst.value = src.value;
 }
 function main() -> void {

@@ -1,3 +1,3 @@
-struct Parent { ptr<Child> child; }
-struct Child { ptr<Parent> parent; }
+struct Parent { Child* child; }
+struct Child { Parent* parent; }
 function main() -> void { return; }

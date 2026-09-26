@@ -1,0 +1,1 @@
+{"name":"explicit stdlib collection modules","kind":"compile","source":"collections.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"3\n20\n1\n7\n8\n9\n2\n11\n12\n","run_stderr":""}
