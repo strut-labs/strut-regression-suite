@@ -1,7 +1,7 @@
 include <vector>;
 include <filesystem>;
 function main() -> void : FilesystemError {
-    remove("strut-fs-fixture");
+    remove_all("strut-fs-fixture");
     make_dir("strut-fs-fixture");
     touch("strut-fs-fixture/a.txt");
     print(exists("strut-fs-fixture/a.txt"));
@@ -10,6 +10,6 @@ function main() -> void : FilesystemError {
     copy("strut-fs-fixture/a.txt", "strut-fs-fixture/b.txt");
     move("strut-fs-fixture/b.txt", "strut-fs-fixture/c.txt");
     print(exists("strut-fs-fixture/c.txt"));
-    remove("strut-fs-fixture");
+    remove_all("strut-fs-fixture");
     return;
 }
