@@ -25,15 +25,18 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout regression suite
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: strut-regression-suite
       - name: Checkout compiler
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: strut-labs/strut
           ref: ${{ inputs.compiler_ref || 'main' }}
           path: strut
+      - name: Enable MSVC developer environment
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
       - name: Configure compiler
         run: cmake -S strut -B strut/build -DSTRUT_WARNINGS_AS_ERRORS=ON
       - name: Build compiler

@@ -1,5 +1,5 @@
 function main() -> void {
-    int* p;
+    ptr<int> p;
     if (true) {
         print("hello");
     }

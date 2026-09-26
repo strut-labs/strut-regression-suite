@@ -72,6 +72,10 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
 
         if not case.get("run", False):
             return True, ""
+        if not artifact.exists() and os.name == "nt":
+            exe_artifact = artifact.with_suffix(".exe")
+            if exe_artifact.exists():
+                artifact = exe_artifact
         if not artifact.exists():
             return False, f"compiler succeeded but artifact was not created: {artifact}"
 
@@ -163,6 +167,10 @@ def run_project_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
         run_artifact = case.get("run_artifact")
         if run_artifact:
             artifact = project / run_artifact
+            if not artifact.exists() and os.name == "nt":
+                exe_artifact = artifact.with_suffix(".exe")
+                if exe_artifact.exists():
+                    artifact = exe_artifact
             if not artifact.exists():
                 return False, f"project artifact not found: {artifact}"
             proc = run_process([str(artifact)], cwd=project, text=True, capture_output=True, check=False, env=env)

@@ -5,23 +5,29 @@ on:
 jobs:
   regression:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: strut-labs/strut
           path: strut
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           path: suite
+      - name: Enable MSVC developer environment
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
       - name: Configure Strut
         run: cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release
       - name: Build Strut
         run: cmake --build strut/build --config Release
-      - name: Run regression suite
-        shell: bash
-        run: |
-          if [ -x strut/build/strut ]; then BIN=strut/build/strut; else BIN=strut/build/Release/strut.exe; fi
-          python3 suite/runner.py --compiler "$BIN"
+      - name: Run regression suite (POSIX)
+        if: runner.os != 'Windows'
+        run: python3 suite/runner.py --compiler strut/build/strut
+      - name: Run regression suite (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: python suite/runner.py --compiler strut/build/Release/strut.exe
