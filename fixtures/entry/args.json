@@ -1,1 +1,1 @@
-{"name":"main receives user arguments and program path separately","kind":"compile","source":"args.p","compile_exit":0,"run":true,"run_command":["{artifact}","one","two words",""],"run_exit":0,"run_stdout":"3\none\ntwo words\n\n1\n","run_stderr":""}
+{"name":"main receives invocation command and user arguments separately","kind":"compile","source":"args.p","compile_exit":0,"run":true,"run_command":["{artifact}","one","two words",""],"run_exit":0,"run_stdout":"{artifact}\n3\none\ntwo words\n\n","run_stderr":""}

@@ -120,7 +120,12 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
                 rendered = rendered.replace(marker, replacement)
             run_env[key] = rendered
         run_proc = run_process(run_command, cwd=tmp, text=True, capture_output=True, check=False, env=run_env)
-        run_failures = check_process(run_proc, case, "run_")
+        rendered_case = dict(case)
+        for key in ("run_stdout", "run_stderr"):
+            if isinstance(rendered_case.get(key), str):
+                for marker, replacement in replacements.items():
+                    rendered_case[key] = rendered_case[key].replace(marker, replacement)
+        run_failures = check_process(run_proc, rendered_case, "run_")
         return (not run_failures, "; ".join(run_failures))
 
 

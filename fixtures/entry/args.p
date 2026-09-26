@@ -1,8 +1,8 @@
-function main(string[] args) -> int {
+function main(string cmd, string[] args) -> int {
+    println(cmd);
     println(args.length());
     for (arg : args) {
         println(arg);
     }
-    println(program_path() != "");
     return 0;
 }

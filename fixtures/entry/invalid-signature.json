@@ -1,0 +1,1 @@
+{"name":"main rejects unsupported signatures","kind":"compile","source":"invalid-signature.p","compile_exit":1,"compile_stderr_contains":["function main(string cmd, string[] args) -> int"]}
