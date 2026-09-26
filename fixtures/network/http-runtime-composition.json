@@ -1,0 +1,7 @@
+{
+  "name": "HTTP client composes with system runtime helpers",
+  "kind": "compile",
+  "source": "http-runtime-composition.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}
