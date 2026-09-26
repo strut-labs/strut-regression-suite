@@ -23,7 +23,11 @@ jobs:
       - name: Configure native dependencies (Ubuntu)
         if: runner.os == 'Linux'
         shell: bash
-        run: echo "STRUT_LDFLAGS=$(pkg-config --libs libcurl)" >> "$GITHUB_ENV"
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes libcurl4-openssl-dev libsqlite3-dev
+          echo "STRUT_CXXFLAGS=$(pkg-config --cflags libcurl)" >> "$GITHUB_ENV"
+          echo "STRUT_LDFLAGS=$(pkg-config --libs libcurl)" >> "$GITHUB_ENV"
       - name: Install current LLVM/libc++ (macOS)
         if: runner.os == 'macOS'
         shell: bash
