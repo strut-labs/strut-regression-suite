@@ -1,0 +1,1 @@
+{"name":"JSON and filesystem components compose","kind":"compile","source":"json-filesystem.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"\"strut\"\n","run_stderr":""}
