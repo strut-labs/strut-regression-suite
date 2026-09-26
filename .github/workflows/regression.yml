@@ -46,7 +46,6 @@ jobs:
           echo "CXX=$LLVM_PREFIX/bin/clang++" >> "$GITHUB_ENV"
           echo "STRUT_CXXFLAGS=-nostdinc++ -isystem $LLVM_PREFIX/include/c++/v1 -D_LIBCPP_DISABLE_AVAILABILITY" >> "$GITHUB_ENV"
           echo "STRUT_LDFLAGS=-L$LLVM_PREFIX/lib/c++ -Wl,-rpath,$LLVM_PREFIX/lib/c++" >> "$GITHUB_ENV"
-          echo "DYLD_LIBRARY_PATH=$LLVM_PREFIX/lib/c++" >> "$GITHUB_ENV"
       - name: Configure Strut (non-macOS)
         if: runner.os != 'macOS'
         run: cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release
@@ -63,7 +62,14 @@ jobs:
         run: cmake --build strut/build --config Release
       - name: Run regression suite (POSIX)
         if: runner.os != 'Windows'
-        run: python3 suite/runner.py --compiler strut/build/strut
+        shell: bash
+        run: |
+          if [[ "$RUNNER_OS" == "macOS" ]]; then
+            LLVM_PREFIX="$(brew --prefix llvm)"
+            DYLD_LIBRARY_PATH="$LLVM_PREFIX/lib/c++" python3 suite/runner.py --compiler strut/build/strut
+          else
+            python3 suite/runner.py --compiler strut/build/strut
+          fi
       - name: Run regression suite (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
