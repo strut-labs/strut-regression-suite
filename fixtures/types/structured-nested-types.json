@@ -1,0 +1,7 @@
+{
+  "name": "structured nested types compose across aliases and typed lambdas",
+  "kind": "compile",
+  "source": "structured-nested-types.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}
