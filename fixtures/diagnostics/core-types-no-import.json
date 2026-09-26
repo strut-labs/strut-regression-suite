@@ -1,0 +1,11 @@
+{
+  "name": "core arrays and JSON never suggest modules",
+  "kind": "compile",
+  "source": "core-types-no-import.p",
+  "compile_exit": 0,
+  "compile_stderr": "",
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "3\n1\n",
+  "run_stderr": ""
+}

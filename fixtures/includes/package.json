@@ -1,1 +1,1 @@
-{"name":"package include requires manifest","kind":"compile_fail","source":"package.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["package include requires project strut.json"]}
+{"name":"package include distinguishes project dependencies","kind":"compile_fail","source":"package.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["package dependency include","requires a project strut.json","help: run `strut init`"]}

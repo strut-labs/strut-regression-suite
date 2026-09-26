@@ -1,1 +1,1 @@
-{"name":"undeclared checked error propagation rejected","kind":"compile","source":"checked-bad.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["may throw checked error IOError"]}
+{"name":"undeclared checked error propagation rejected","kind":"compile","source":"checked-bad.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["call to 'risky' may throw checked error IOError","help: handle IOError with `try`/`catch`","enclosing function signature"]}

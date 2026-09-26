@@ -1,0 +1,11 @@
+{
+  "name": "missing standard module has actionable import help",
+  "kind": "compile_fail",
+  "source": "missing-module.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": [
+    "requires standard module <map>",
+    "help: add `include <map>;`"
+  ]
+}
