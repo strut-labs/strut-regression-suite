@@ -1,0 +1,7 @@
+{
+  "kind": "compile",
+  "source": "http-lifecycle.p",
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": ""
+}
