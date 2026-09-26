@@ -1,1 +1,1 @@
-{"name":"vector module is explicit","kind":"compile","source":"missing-vector.p","compile_exit":1,"compile_stderr_contains":["requires include <vector>;"]}
+{"name":"dynamic arrays are core","kind":"compile","source":"missing-vector.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"3\n","run_stderr":""}

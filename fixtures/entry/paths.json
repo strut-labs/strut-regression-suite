@@ -1,0 +1,1 @@
+{"name":"int main accepts explicit returns on all paths","kind":"compile","source":"paths.p","compile_exit":0,"run":true,"run_exit":2,"run_stdout":"","run_stderr":""}

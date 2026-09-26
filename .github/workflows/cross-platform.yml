@@ -37,6 +37,13 @@ jobs:
       - name: Enable MSVC developer environment
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
+      - name: Install current LLVM toolchain (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          brew install llvm
+          echo "CC=$(brew --prefix llvm)/bin/clang" >> "$GITHUB_ENV"
+          echo "CXX=$(brew --prefix llvm)/bin/clang++" >> "$GITHUB_ENV"
       - name: Configure compiler
         run: cmake -S strut -B strut/build -DSTRUT_WARNINGS_AS_ERRORS=ON
       - name: Build compiler

@@ -1,0 +1,1 @@
+{"name":"paired filesystem mapping rejects unordered collections","kind":"compile","source":"filesystem-unordered-pair.p","compile_exit":1,"compile_stderr_contains":["ordered iterable collections"]}

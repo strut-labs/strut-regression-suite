@@ -1,0 +1,1 @@
+{"name":"filesystem collections require string elements","kind":"compile","source":"filesystem-element-type.p","compile_exit":1,"compile_stderr_contains":["elements must be convertible to string paths"]}

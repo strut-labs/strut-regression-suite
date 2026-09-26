@@ -1,0 +1,1 @@
+{"name":"filesystem operations accept compatible iterable collections","kind":"compile","source":"filesystem-iterables.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n1\n","run_stderr":""}

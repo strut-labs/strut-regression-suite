@@ -1,0 +1,1 @@
+{"name":"int main rejects bare return","kind":"compile","source":"bare-return.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["non-void function must return a value"],"run":false}

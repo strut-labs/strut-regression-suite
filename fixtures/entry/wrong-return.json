@@ -1,0 +1,1 @@
+{"name":"int main rejects wrong return type","kind":"compile","source":"wrong-return.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["return value is incompatible"],"run":false}

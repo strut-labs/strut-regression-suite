@@ -20,6 +20,13 @@ jobs:
       - name: Enable MSVC developer environment
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
+      - name: Install current LLVM toolchain (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          brew install llvm
+          echo "CC=$(brew --prefix llvm)/bin/clang" >> "$GITHUB_ENV"
+          echo "CXX=$(brew --prefix llvm)/bin/clang++" >> "$GITHUB_ENV"
       - name: Configure native dependencies (Ubuntu)
         if: runner.os == 'Linux'
         shell: bash
@@ -38,7 +45,7 @@ jobs:
           "INCLUDE=$env:INCLUDE;$installed\include" >> $env:GITHUB_ENV
           "LIB=$env:LIB;$installed\lib" >> $env:GITHUB_ENV
           "$installed\bin" >> $env:GITHUB_PATH
-      - name: Configure Strut (non-macOS)
+      - name: Configure Strut (POSIX)
         if: runner.os != 'Windows'
         run: cmake -S strut -B strut/build -DCMAKE_BUILD_TYPE=Release
       - name: Configure Strut (Windows)
