@@ -1,0 +1,7 @@
+{
+  "name": "empty generic array literal has a Strut diagnostic",
+  "kind": "compile",
+  "source": "empty-array-inference.p",
+  "compile_exit": 1,
+  "compile_stderr_contains": ["cannot infer element type of empty array literal", "add an explicit type"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "machine-readable API index exposes contracts",
+  "kind": "cli",
+  "args": ["api", "--json"],
+  "exit": 0,
+  "stdout_contains": ["\"http_get\"", "\"HttpError\"", "\"libcurl\"", "\"sqlite_db\""],
+  "stderr": ""
+}

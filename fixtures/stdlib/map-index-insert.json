@@ -1,0 +1,1 @@
+{"name":"map index assignment inserts missing key","kind":"compile","source":"map-index-insert.p","run":true,"run_stdout":"3\n"}
