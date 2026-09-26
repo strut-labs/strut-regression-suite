@@ -26,7 +26,7 @@ if "FAIL_COMPILE" in text:
     print(f"{source}:2:5: error: deliberate compile failure", file=sys.stderr)
     raise SystemExit(7)
 out = Path(args[args.index("-o") + 1])
-out.write_text('print("hello from generated program")\n', encoding="utf-8")
+out.write_text('from pathlib import Path\nPath("generated-program-output").write_text("ok")\nprint("hello from generated program")\n', encoding="utf-8")
 '''
 
 
@@ -53,6 +53,7 @@ def main() -> int:
         }
         ok, message = runner.run_compile_case(compiler, ok_case_path, ok_case)
         require(ok, f"success/run assertion failed: {message}")
+        require(not (ROOT / "generated-program-output").exists(), "generated program escaped temporary cwd")
 
         bad_source = tmp / "bad.p"
         bad_source.write_text("line1\nFAIL_COMPILE\n", encoding="utf-8")
@@ -71,6 +72,17 @@ def main() -> int:
         wrong_case["run_stdout"] = "WRONG\n"
         ok, _ = runner.run_compile_case(compiler, ok_case_path, wrong_case)
         require(not ok, "deliberately wrong expectation did not fail")
+
+        misplaced_case = dict(bad_case)
+        misplaced_case.pop("compile_stderr_contains")
+        misplaced_case["stderr_contains"] = ["deliberate compile failure"]
+        ok, message = runner.run_case(compiler, bad_case_path, misplaced_case)
+        require(not ok and "misplaced" in message, "misplaced compile expectation was not rejected")
+
+        scalar_contains_case = dict(bad_case)
+        scalar_contains_case["compile_stderr_contains"] = "deliberate compile failure"
+        ok, message = runner.run_case(compiler, bad_case_path, scalar_contains_case)
+        require(not ok and "list of strings" in message, "scalar contains expectation was not rejected")
 
     print("regression harness self-test passed")
     return 0

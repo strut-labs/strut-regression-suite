@@ -13,6 +13,7 @@ from typing import Sequence
 
 ROOT = Path(__file__).resolve().parent
 PROCESS_TIMEOUT = 90.0
+PROCESS_EXPECTATIONS = {"exit", "stdout", "stderr", "stdout_contains", "stderr_contains"}
 
 def run_process(*args, **kwargs):
     kwargs.setdefault("timeout", PROCESS_TIMEOUT)
@@ -55,6 +56,23 @@ def check_process(proc: subprocess.CompletedProcess[str], case: dict, prefix: st
     for needle in case.get(f"{prefix}stderr_contains", []):
         if needle not in proc.stderr:
             failures.append(f"{prefix}stderr missing {needle!r}")
+    return failures
+
+
+def validate_case(case: dict) -> list[str]:
+    failures: list[str] = []
+    kind = case.get("kind")
+    if kind in {"compile", "compile_fail"}:
+        misplaced = sorted(PROCESS_EXPECTATIONS.intersection(case))
+        if misplaced:
+            failures.append(
+                "compile cases must use compile_/run_ expectation keys; misplaced: "
+                + ", ".join(misplaced)
+            )
+    for key, value in case.items():
+        if key.endswith(("stdout_contains", "stderr_contains")):
+            if not isinstance(value, list) or not all(isinstance(item, str) for item in value):
+                failures.append(f"{key} must be a list of strings")
     return failures
 
 
@@ -101,7 +119,7 @@ def run_compile_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
             for marker, replacement in replacements.items():
                 rendered = rendered.replace(marker, replacement)
             run_env[key] = rendered
-        run_proc = run_process(run_command, text=True, capture_output=True, check=False, env=run_env)
+        run_proc = run_process(run_command, cwd=tmp, text=True, capture_output=True, check=False, env=run_env)
         run_failures = check_process(run_proc, case, "run_")
         return (not run_failures, "; ".join(run_failures))
 
@@ -188,6 +206,9 @@ def run_project_case(compiler_cmd: Sequence[str], case_path: Path, case: dict) -
         return True, ""
 
 def run_case(compiler_cmd: Sequence[str], path: Path, case: dict) -> tuple[bool, str]:
+    validation_failures = validate_case(case)
+    if validation_failures:
+        return False, "; ".join(validation_failures)
     kind = case.get("kind")
     if kind == "cli":
         return run_cli_case(compiler_cmd, case)

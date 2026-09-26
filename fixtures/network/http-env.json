@@ -1,0 +1,7 @@
+{
+  "name": "HTTP client with environment-configured URL compiles",
+  "kind": "compile",
+  "source": "http-env.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}
