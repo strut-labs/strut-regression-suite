@@ -1,0 +1,1 @@
+{"name":"prefix use does not select postfix overload","kind":"compile","source":"missing-prefix.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["no prefix ++ overload exists for 'Counter'"]}

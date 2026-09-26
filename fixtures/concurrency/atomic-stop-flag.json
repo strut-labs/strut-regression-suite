@@ -1,0 +1,1 @@
+{"name":"atomic bool stop flag across threads","kind":"compile","source":"atomic-stop-flag.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n","run_stderr":""}

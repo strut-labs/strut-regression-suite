@@ -1,0 +1,1 @@
+{"name":"duplicate prefix overload rejected","kind":"compile","source":"duplicate-prefix.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["ambiguous duplicate operator overload for '++'"]}

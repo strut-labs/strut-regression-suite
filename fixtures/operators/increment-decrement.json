@@ -1,0 +1,1 @@
+{"name":"distinct prefix and postfix increment decrement overloads","kind":"compile","source":"increment-decrement.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"6\n6\n6\n6\n5\n","run_stderr":""}
