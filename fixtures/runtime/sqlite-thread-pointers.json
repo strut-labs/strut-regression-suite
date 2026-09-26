@@ -1,0 +1,7 @@
+{
+  "name": "SQLite composes with threads and container-held pointers",
+  "kind": "compile",
+  "source": "sqlite-thread-pointers.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}

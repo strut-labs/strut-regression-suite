@@ -1,0 +1,7 @@
+{
+  "name": "async composes with filesystem and process runtimes",
+  "kind": "compile",
+  "source": "async-filesystem-process.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}
