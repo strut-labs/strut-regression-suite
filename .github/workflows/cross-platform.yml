@@ -16,7 +16,7 @@ jobs:
         include:
           - os: ubuntu-24.04
             name: linux-x64
-          - os: macos-14
+          - os: macos-latest
             name: macos-arm64
           - os: windows-2022
             name: windows-x64
@@ -37,13 +37,28 @@ jobs:
       - name: Enable MSVC developer environment
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
+      - name: Install generated-program dependencies (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install --yes libcurl4-openssl-dev libssl-dev
       - name: Install current LLVM toolchain (macOS)
         if: runner.os == 'macOS'
         shell: bash
         run: |
-          brew install llvm
+          brew install llvm openssl@3
           echo "CC=$(brew --prefix llvm)/bin/clang" >> "$GITHUB_ENV"
           echo "CXX=$(brew --prefix llvm)/bin/clang++" >> "$GITHUB_ENV"
+          echo "CPATH=$(brew --prefix openssl@3)/include" >> "$GITHUB_ENV"
+          echo "LIBRARY_PATH=$(brew --prefix openssl@3)/lib" >> "$GITHUB_ENV"
+      - name: Install generated-program dependencies (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          vcpkg install curl:x64-windows sqlite3:x64-windows openssl:x64-windows
+          $vcpkgRoot = Split-Path -Parent (Get-Command vcpkg).Source
+          $installed = "$vcpkgRoot\installed\x64-windows"
+          "INCLUDE=$env:INCLUDE;$installed\include" >> $env:GITHUB_ENV
+          "LIB=$env:LIB;$installed\lib" >> $env:GITHUB_ENV
+          "$installed\bin" >> $env:GITHUB_PATH
       - name: Configure compiler
         run: cmake -S strut -B strut/build -DSTRUT_WARNINGS_AS_ERRORS=ON
       - name: Build compiler
@@ -54,4 +69,6 @@ jobs:
       - name: Run regressions (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
-        run: python strut-regression-suite/runner.py --compiler strut/build/Release/strut.exe --jobs 2
+        # MSVC's default shared vc140.pdb is not safe across independent cl.exe
+        # processes, so keep native fixture compilations serial on Windows.
+        run: python strut-regression-suite/runner.py --compiler strut/build/Release/strut.exe --jobs 1
