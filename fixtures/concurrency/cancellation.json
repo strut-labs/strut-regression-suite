@@ -1,0 +1,1 @@
+{"name":"unified cancellation source and token","kind":"compile","source":"cancellation.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"0\n1\ncancelled\n","run_stderr":""}
