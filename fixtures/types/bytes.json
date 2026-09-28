@@ -1,0 +1,1 @@
+{"name":"first class owned bytes values","kind":"compile","source":"bytes.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n5\n1\n1\n1\n3\n1\n","run_stderr":""}

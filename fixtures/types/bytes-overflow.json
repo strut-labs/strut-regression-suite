@@ -1,0 +1,1 @@
+{"name":"bytes reject values outside uint8","kind":"compile_fail","source":"bytes-overflow.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["must fit uint_8"],"run":false}
