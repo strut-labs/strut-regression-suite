@@ -1,0 +1,1 @@
+{"name":"cancellable blocking process streams","kind":"compile","source":"cancellable-streaming.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n1\n","run_stderr":"","run_env":{"STRUT_TEST_PYTHON":"{python}","STRUT_TEST_CANCELLATION_HELPER":"{fixture_dir}/cancellable-streaming-helper.py"}}
