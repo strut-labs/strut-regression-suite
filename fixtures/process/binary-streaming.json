@@ -1,0 +1,1 @@
+{"name":"binary process pipe adapters","kind":"compile","source":"binary-streaming.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"1\n1\n0\n","run_stderr":"","run_env":{"STRUT_TEST_PYTHON":"{python}","STRUT_TEST_BINARY_HELPER":"{fixture_dir}/binary-stream-helper.py"}}
