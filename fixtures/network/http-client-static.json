@@ -1,0 +1,1 @@
+{"name":"fully static libcurl request is rejected","kind":"compile_fail","source":"http.p","compile_args":["{source}","-o","{artifact}","--static"],"compile_exit":1,"compile_stderr_contains":["fully static linking with libcurl is not supported","use --dynamic"],"run":false}

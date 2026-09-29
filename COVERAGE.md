@@ -14,7 +14,7 @@ The independent suite is black-box coverage of shipped Strut behaviour. Compiler
 | Includes, contracts, package includes | yes |
 | Filesystem, streams, environment, process APIs | yes |
 | Threads, mutexes, channels, async | yes |
-| TCP, TLS client, HTTP client/server | yes |
+| TCP, TLS client, HTTP client compile surface/server | yes |
 | SQLite, embedding, static assets | yes |
 | Formatter and CLI workflows | yes |
 | Incremental `.o` / `.info.json` invalidation | yes |
@@ -23,6 +23,8 @@ The independent suite is black-box coverage of shipped Strut behaviour. Compiler
 | LSP command surface | yes |
 
 Negative fixtures cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors, malformed/noncanonical Base64, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread-reference policy.
+
+Bounded outbound HTTP transfer behavior is certified against a deterministic local peer in the compiler repository; this independent suite covers its public compile surface and composition.
 
 ## Real-project fixtures
 
