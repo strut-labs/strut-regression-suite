@@ -1,0 +1,7 @@
+{
+  "name": "CP13 HTTP application helper public API compiles",
+  "kind": "compile",
+  "source": "http-application-helpers.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}

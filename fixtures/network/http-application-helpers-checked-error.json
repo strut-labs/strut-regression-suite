@@ -1,0 +1,13 @@
+{
+  "name": "CP13 HTTP application helpers enforce checked errors",
+  "kind": "compile_fail",
+  "source": "http-application-helpers-checked-error.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": [
+    "call to 'text' may throw checked error HttpError",
+    "call to 'http_redirect' may throw checked error HttpError",
+    "call to 'cookie' may throw checked error NetworkError",
+    "enclosing function signature"
+  ]
+}
