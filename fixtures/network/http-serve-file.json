@@ -1,0 +1,7 @@
+{
+  "name": "CP14 http_serve_file public API compiles",
+  "kind": "compile",
+  "source": "http-serve-file.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}
