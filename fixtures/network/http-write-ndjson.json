@@ -1,0 +1,7 @@
+{
+  "name": "CP15 http_write_ndjson public API compiles",
+  "kind": "compile",
+  "source": "http-write-ndjson.p",
+  "compile_exit": 0,
+  "compile_stderr": ""
+}
