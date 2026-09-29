@@ -1,0 +1,1 @@
+{"name":"encoding checked error enforcement","kind":"compile_fail","source":"checked-error.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["may throw checked error EncodingError","try`/`catch","enclosing function signature"],"run":false}

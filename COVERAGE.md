@@ -8,6 +8,7 @@ The independent suite is black-box coverage of shipped Strut behaviour. Compiler
 | Declarations, aliases, expressions, control flow | yes |
 | Functions, lambdas, generics, operators | yes |
 | Arrays, maps, strings, JSON, structs, enums | yes |
+| Bytes, Base64/Base64url, SHA-256, HMAC and secure random | yes |
 | Nullability, `ptr`, `ref`, `weak_ptr`, raw/unsafe | yes |
 | Checked errors / try-catch | yes |
 | Includes, contracts, package includes | yes |
@@ -21,7 +22,7 @@ The independent suite is black-box coverage of shipped Strut behaviour. Compiler
 | Local package add/install/include | yes |
 | LSP command surface | yes |
 
-Negative fixtures cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread-reference policy.
+Negative fixtures cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors, malformed/noncanonical Base64, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread-reference policy.
 
 ## Real-project fixtures
 
