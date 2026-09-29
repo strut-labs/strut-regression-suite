@@ -1,0 +1,1 @@
+{"name":"streaming HTTP client requires HttpError","kind":"compile_fail","source":"http-request-stream-checked-error.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["call to 'http_request_stream' may throw checked error HttpError","help: handle HttpError with `try`/`catch`","enclosing function signature"],"run":false}

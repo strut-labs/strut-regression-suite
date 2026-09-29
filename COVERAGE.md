@@ -14,7 +14,7 @@ The independent suite is black-box coverage of shipped Strut behaviour. Compiler
 | Includes, contracts, package includes | yes |
 | Filesystem, streams, environment, process APIs | yes |
 | Threads, mutexes, channels, async | yes |
-| TCP, TLS client, HTTP client compile surface/server | yes |
+| TCP, TLS client, HTTP client buffered/streaming compile surface/server | yes |
 | SQLite, embedding, static assets | yes |
 | Formatter and CLI workflows | yes |
 | Incremental `.o` / `.info.json` invalidation | yes |
@@ -22,9 +22,9 @@ The independent suite is black-box coverage of shipped Strut behaviour. Compiler
 | Local package add/install/include | yes |
 | LSP command surface | yes |
 
-Negative fixtures cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors, malformed/noncanonical Base64, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread-reference policy.
+Negative fixtures cover malformed lexing, missing semicolons, duplicate declarations, numeric overflow/incompatible assignment, invalid generics, abstract/multiple-base errors, non-exhaustive match, unchecked errors (including the streaming HTTP client's required `HttpError`), malformed/noncanonical Base64, nullable access, const violations, raw-pointer unsafe boundaries, invalid references, and thread-reference policy.
 
-Bounded outbound HTTP transfer behavior is certified against a deterministic local peer in the compiler repository; this independent suite covers its public compile surface and composition.
+Bounded outbound HTTP transfer behavior is certified against a deterministic local peer in the compiler repository; this independent suite covers its public compile surface and composition. Independent fixtures compile the synchronous and asynchronous `http_request_stream` APIs, `http_response_head` fields, nullable upload/download callbacks, and cancellation-token overloads.
 
 ## Real-project fixtures
 
