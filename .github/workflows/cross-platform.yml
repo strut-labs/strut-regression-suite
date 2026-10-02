@@ -33,6 +33,7 @@ jobs:
         with:
           repository: strut-labs/strut
           ref: ${{ inputs.compiler_ref || 'main' }}
+          fetch-depth: 0
           path: strut
       - name: Enable MSVC developer environment
         if: runner.os == 'Windows'
