@@ -1,0 +1,14 @@
+{
+  "name": "zero-major SemVer package flows through the real resolver",
+  "kind": "project",
+  "project": "project",
+  "steps": [
+    {"args": ["add", "pkg0.1.0"], "exit": 0},
+    {"args": ["update"], "exit": 0},
+    {"args": ["packages", "--json"], "exit": 0, "stdout_contains": ["\"resolved_version\": \"0.1.0\"", "\"name\": \"semver-pkg\""]},
+    {"args": ["main.p", "-o", "app"], "exit": 0}
+  ],
+  "run_artifact": "app",
+  "run_exit": 0,
+  "run_stdout": "1\n"
+}

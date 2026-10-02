@@ -1,0 +1,9 @@
+{
+  "name": "namespace-scope aggregate initialization",
+  "kind": "compile",
+  "source": "global-aggregate.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stderr": ""
+}
