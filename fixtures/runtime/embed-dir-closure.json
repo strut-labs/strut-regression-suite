@@ -1,0 +1,10 @@
+{
+  "name": "builtin collection-typed API satisfies its module requirement",
+  "kind": "compile",
+  "source": "embed-dir-closure.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "2\nhello\nworld\n",
+  "run_stderr": ""
+}
