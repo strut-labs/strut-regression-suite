@@ -1,0 +1,1 @@
+{"name":"base private method via pointer to derived rejected","kind":"compile","source":"inherit-ptr-method-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["private method 'helper' is not accessible here"]}

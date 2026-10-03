@@ -1,0 +1,1 @@
+{"name":"base private field named in derived literal rejected","kind":"compile","source":"inherit-literal-private-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["private field 'secret' is not accessible here"]}
