@@ -1,0 +1,1 @@
+{"name":"error struct public fields remain accessible","kind":"compile","source":"error-struct-public.p","compile_exit":0,"run":true,"run_exit":0,"run_stdout":"x\n"}

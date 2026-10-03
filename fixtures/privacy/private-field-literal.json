@@ -1,0 +1,1 @@
+{"name":"private field struct literal rejected","kind":"compile","source":"private-field-literal.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["private field 'value' is not accessible here"]}

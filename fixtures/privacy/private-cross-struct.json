@@ -1,0 +1,1 @@
+{"name":"cross-struct private field access rejected","kind":"compile","source":"private-cross-struct.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["private field 'secret' is not accessible here"]}

@@ -1,0 +1,1 @@
+{"name":"generic struct private field internal access","kind":"compile","source":"private-generic.p","compile_exit":0,"run":true,"run_exit":0}

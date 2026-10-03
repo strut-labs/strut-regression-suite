@@ -1,0 +1,1 @@
+{"name":"nested private field external access rejected","kind":"compile","source":"private-nested-external.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["private field 'inner' is not accessible here"]}

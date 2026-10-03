@@ -1,0 +1,1 @@
+{"name":"pointer arrow access to private field rejected","kind":"compile","source":"private-arrow.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["private field 'value' is not accessible here"]}
