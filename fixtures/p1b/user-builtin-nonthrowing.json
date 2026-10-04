@@ -1,0 +1,1 @@
+{"name":"p1c nonthrowing user callable sharing builtin leaf stays nonthrowing","kind":"compile","source":"user-builtin-nonthrowing.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

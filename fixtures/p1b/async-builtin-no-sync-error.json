@@ -1,0 +1,1 @@
+{"name":"p1c async builtin does not require await-time error synchronously","kind":"compile","source":"async-builtin-no-sync-error.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

@@ -1,0 +1,1 @@
+{"name":"p1c async returned future retains await-time error in its type","kind":"compile","source":"async-future-retains-error.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["future value may throw checked error HttpError"]}

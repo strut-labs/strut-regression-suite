@@ -1,0 +1,1 @@
+{"name":"p1c user function named like builtin uses user contract only","kind":"compile","source":"user-builtin-collision.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

@@ -1,0 +1,1 @@
+{"name":"p1c selected overload propagates only its own error","kind":"compile","source":"overload-selected-error.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
