@@ -1,0 +1,1 @@
+{"name":"p3c overloaded named function value selects slot overload contract","kind":"compile","source":"fnvalue-overload-select.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

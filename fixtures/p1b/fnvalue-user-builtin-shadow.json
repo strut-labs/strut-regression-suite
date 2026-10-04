@@ -1,0 +1,1 @@
+{"name":"p3c user/builtin shadow used as value wins user contract","kind":"compile","source":"fnvalue-user-builtin-shadow.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

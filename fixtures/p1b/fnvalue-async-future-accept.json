@@ -1,0 +1,1 @@
+{"name":"p3c async named function value matches effect-bearing future slot without outer E","kind":"compile","source":"fnvalue-async-future-accept.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
