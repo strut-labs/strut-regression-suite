@@ -1,0 +1,1 @@
+{"name":"p1c async builtin future retains await-time error (plain slot rejected)","kind":"compile","source":"async-builtin-effect-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["future value may throw checked error HttpError","destination future type does not allow it"]}

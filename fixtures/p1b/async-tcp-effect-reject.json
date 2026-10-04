@@ -1,0 +1,1 @@
+{"name":"p1c tcp accept_async future retains NetworkError (plain slot rejected)","kind":"compile","source":"async-tcp-effect-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["future value may throw checked error NetworkError"]}

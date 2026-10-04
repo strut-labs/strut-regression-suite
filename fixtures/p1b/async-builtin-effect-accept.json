@@ -1,0 +1,1 @@
+{"name":"p1c async builtin future matches effect-bearing slot without sync requirement","kind":"compile","source":"async-builtin-effect-accept.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

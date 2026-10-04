@@ -1,0 +1,1 @@
+{"name":"p1c get_async registration keeps synchronous NetworkError (not await-time)","kind":"compile","source":"async-registration-sync-error.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["call to 'get_async' may throw checked error NetworkError"]}
