@@ -1,0 +1,1 @@
+{"name":"p1b higher-order invoke with Error-capable slot compiles","kind":"compile","source":"invoke-mayfail-accept.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

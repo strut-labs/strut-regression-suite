@@ -1,0 +1,1 @@
+{"name":"p1b throwing HTTP handler rejected against nonthrowing slot","kind":"compile","source":"http-handler-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["expects function<(http_request)->http_server_response>","found function<(http_request)->http_server_response : Error"]}

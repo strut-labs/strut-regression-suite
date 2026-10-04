@@ -1,0 +1,1 @@
+{"name":"p1b function value nonthrowing->throwing subset accepts","kind":"compile","source":"fn-value-pass.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

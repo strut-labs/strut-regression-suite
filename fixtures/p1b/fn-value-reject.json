@@ -1,0 +1,1 @@
+{"name":"p1b function value actual-not-subset rejects","kind":"compile","source":"fn-value-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["function value may throw checked error","destination function type does not allow it"]}

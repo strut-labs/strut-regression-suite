@@ -1,0 +1,1 @@
+{"name":"p1b lambda explicit A rejects throw B","kind":"compile","source":"lambda-explicit-wrong.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["throw of checked error ParseError is not declared"]}

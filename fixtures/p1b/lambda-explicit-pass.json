@@ -1,0 +1,1 @@
+{"name":"p1b lambda explicit clause allows declared throw","kind":"compile","source":"lambda-explicit-pass.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

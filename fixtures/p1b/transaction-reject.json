@@ -1,0 +1,1 @@
+{"name":"p1b throwing transaction callback rejected against nonthrowing slot","kind":"compile","source":"transaction-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["argument 1 to 'transaction' expects function<()->void>","found function<()->void : Error"]}

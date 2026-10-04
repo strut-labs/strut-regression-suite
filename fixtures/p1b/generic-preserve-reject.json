@@ -1,0 +1,1 @@
+{"name":"p1b generic substitution keeps error set for slot check","kind":"compile","source":"generic-preserve-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["function value may throw checked error Error","destination function type does not allow it"]}

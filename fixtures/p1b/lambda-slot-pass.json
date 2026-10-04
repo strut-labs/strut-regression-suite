@@ -1,0 +1,1 @@
+{"name":"p1b lambda contract subset slot accepts","kind":"compile","source":"lambda-slot-pass.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

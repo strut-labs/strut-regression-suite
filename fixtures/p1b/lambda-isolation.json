@@ -1,0 +1,1 @@
+{"name":"p1b lambda context isolation outer errors do not leak","kind":"compile","source":"lambda-isolation.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["throw of checked error IOError is not declared in the enclosing function"]}
