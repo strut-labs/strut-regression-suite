@@ -1,0 +1,1 @@
+{"name":"p1b outer typed catch does not permit deferred lambda throw","kind":"compile","source":"lambda-outer-typedcatch-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["throw of checked error Error is not declared in the enclosing function"]}

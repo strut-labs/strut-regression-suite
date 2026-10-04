@@ -1,0 +1,1 @@
+{"name":"p1b throwing stream handler rejected (Choice A)","kind":"compile","source":"stream-throwing-handler-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["throw of checked error NetworkError is not declared in the enclosing function"]}
