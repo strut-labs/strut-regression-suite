@@ -1,0 +1,1 @@
+{"name":"p2c member call with declaring caller accepted","kind":"compile","source":"method-member-accept.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

@@ -1,0 +1,1 @@
+{"name":"p2c member call propagates method call_errors","kind":"compile","source":"method-member-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["call to 'run' may throw checked error AppError"]}

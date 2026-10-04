@@ -1,0 +1,1 @@
+{"name":"p2c out-of-line checked-error mismatch rejected","kind":"compile","source":"method-ool-err-mismatch.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["out-of-line definition checked-error set"]}

@@ -1,0 +1,1 @@
+{"name":"p2c inherited method propagates declaring-owner contract","kind":"compile","source":"method-inherit-reject.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["call to 'run' may throw checked error AppError"]}

@@ -1,0 +1,1 @@
+{"name":"p2c bare method resolves owner contract not same-leaf other struct","kind":"compile","source":"method-bare-owner.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
