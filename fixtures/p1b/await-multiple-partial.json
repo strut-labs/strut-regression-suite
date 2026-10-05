@@ -1,0 +1,1 @@
+{"name":"p5d await future<T:(A,B)> with partial declaration rejects missing effect","kind":"compile","source":"await-multiple-partial.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["await may throw checked error B"]}

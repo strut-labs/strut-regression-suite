@@ -1,0 +1,1 @@
+{"name":"p5d await future<T:E> accepted when E caught","kind":"compile","source":"await-caught.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

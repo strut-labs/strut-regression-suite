@@ -1,0 +1,1 @@
+{"name":"p5d nested future awaits consume effects layer by layer","kind":"compile","source":"await-nested-future.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["await may throw checked error A"]}

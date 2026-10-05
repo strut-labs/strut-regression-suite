@@ -1,0 +1,1 @@
+{"name":"p5d async call without await requires no synchronous E","kind":"compile","source":"await-no-await.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

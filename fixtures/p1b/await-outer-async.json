@@ -1,0 +1,1 @@
+{"name":"p5d async outer awaiting inner without declaring E rejected","kind":"compile","source":"await-outer-async.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["await may throw checked error AppError"]}
