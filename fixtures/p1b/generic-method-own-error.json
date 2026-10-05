@@ -1,0 +1,1 @@
+{"name":"p4c generic method own checked error propagated","kind":"compile","source":"generic-method-own-error.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}
