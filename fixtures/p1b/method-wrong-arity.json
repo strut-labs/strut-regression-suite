@@ -1,0 +1,1 @@
+{"name":"p4c member call wrong arity rejected","kind":"compile","source":"method-wrong-arity.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["no matching method 'run'"]}

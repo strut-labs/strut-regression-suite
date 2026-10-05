@@ -1,0 +1,1 @@
+{"name":"p4c direct call correct arity wrong argument type rejected","kind":"compile","source":"direct-wrong-type.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["no matching overload for 'parse'"]}
