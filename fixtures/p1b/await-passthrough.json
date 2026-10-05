@@ -1,0 +1,1 @@
+{"name":"p5d future effect preserved through storage and pass-through until await","kind":"compile","source":"await-passthrough.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["await may throw checked error AppError"]}

@@ -1,0 +1,1 @@
+{"name":"p5d await future<T> with no errors requires nothing","kind":"compile","source":"await-future-no-error.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

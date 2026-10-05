@@ -1,0 +1,1 @@
+{"name":"p5d await async builtin accepted inside matching typed catch","kind":"compile","source":"await-builtin-catch.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

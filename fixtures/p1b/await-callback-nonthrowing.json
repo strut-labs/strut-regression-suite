@@ -1,0 +1,1 @@
+{"name":"p5d nonthrowing callback slot rejects awaiting lambda effect","kind":"compile","source":"await-callback-nonthrowing.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["await may throw checked error AppError"]}

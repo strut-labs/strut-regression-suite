@@ -1,0 +1,1 @@
+{"name":"p5d throwing-capable callback slot accepts awaiting lambda with clause","kind":"compile","source":"await-callback-throwing.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

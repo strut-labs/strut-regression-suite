@@ -1,0 +1,1 @@
+{"name":"p5d partial typed catch does not suppress other await error","kind":"compile","source":"await-partial-catch.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["await may throw checked error B"]}
