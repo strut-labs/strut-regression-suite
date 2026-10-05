@@ -1,0 +1,1 @@
+{"name":"p4c direct call same-param different-return no expected return rejected ambiguous","kind":"compile","source":"direct-sameparam-retval-ambiguous.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["ambiguous call to 'parse'"]}
