@@ -1,0 +1,1 @@
+{"name":"p3c single generic function value preserved without context","kind":"compile","source":"fnvalue-single-generic.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

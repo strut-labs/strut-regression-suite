@@ -1,0 +1,1 @@
+{"name":"p3c no-context overloaded function value rejected as ambiguous","kind":"compile","source":"fnvalue-overload-ambiguous.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["ambiguous function value 'parse'"]}
