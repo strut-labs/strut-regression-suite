@@ -1,0 +1,1 @@
+{"name":"p3c same-param different-return overload value selects by return/effect contract","kind":"compile","source":"fnvalue-sameparam-retval-select.p","compile_args":["--check","{source}"],"compile_exit":0,"compile_stderr":"","run":false}

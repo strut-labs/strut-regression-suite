@@ -1,0 +1,1 @@
+{"name":"p3c same-param overload value wrong-effect slot rejected","kind":"compile","source":"fnvalue-sameparam-retval-wrong.p","compile_args":["--check","{source}"],"compile_exit":1,"compile_stderr_contains":["ambiguous function value 'parse'"]}
