@@ -1,0 +1,11 @@
+{
+  "name": "reactor path: stop() drains while requests are in flight (STRUT_HTTP_REACTOR=1)",
+  "kind": "compile",
+  "source": "reactor-stop-test.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stderr": "",
+  "run_stdout_contains": ["200", "Hello, World!", "STOP_OK"]
+}
