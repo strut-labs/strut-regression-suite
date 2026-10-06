@@ -1,0 +1,11 @@
+{
+  "name": "reactor: route semantics (static, :param, multi-param, trailing slash, mismatch)",
+  "kind": "compile",
+  "source": "reactor-route-semantics.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stdout": "root200\na200\ngreet200\nmulti200\ntrailing200\nmiss404\n",
+  "run_stderr": ""
+}
