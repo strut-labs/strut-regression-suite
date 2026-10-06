@@ -1,0 +1,11 @@
+{
+  "name": "reactor path: request_stream body decoding + buffered coexist (STRUT_HTTP_REACTOR=1)",
+  "kind": "compile",
+  "source": "reactor-requeststream-test.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stdout": "200\nhello\nHello, World!\n",
+  "run_stderr": ""
+}
