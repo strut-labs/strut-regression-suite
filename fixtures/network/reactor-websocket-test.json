@@ -1,0 +1,11 @@
+{
+  "name": "reactor path: websocket route + buffered route server starts/serves/stops (STRUT_HTTP_REACTOR=1)",
+  "kind": "compile",
+  "source": "reactor-websocket-test.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stdout": "200\nHello, World!\n",
+  "run_stderr": ""
+}
