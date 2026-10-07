@@ -1,0 +1,11 @@
+{
+  "name": "request.cancellation can be copied out of the callback and remains a valid token after request completion (reactor)",
+  "kind": "compile",
+  "source": "cancellation-escape.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stdout": "status200\nvalid0\n",
+  "run_stderr": ""
+}
