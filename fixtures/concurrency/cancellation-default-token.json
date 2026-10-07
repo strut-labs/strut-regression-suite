@@ -1,0 +1,10 @@
+{
+  "name": "default cancellation_token is a live uncancelled state (cancelled false, no throw)",
+  "kind": "compile",
+  "source": "cancellation-default-token.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_exit": 0,
+  "run_stdout": "0\nno-throw\n",
+  "run_stderr": ""
+}
