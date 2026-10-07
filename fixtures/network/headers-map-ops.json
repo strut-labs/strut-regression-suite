@@ -1,0 +1,11 @@
+{
+  "name": "reactor: request.headers supports the generic map<string,string> operation surface",
+  "kind": "compile",
+  "source": "headers-map-ops.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stdout": "mvv\nvaladded\ngrow1\nshrink1\nhost1\nstatus200\n",
+  "run_stderr": ""
+}
