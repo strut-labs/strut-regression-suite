@@ -1,0 +1,11 @@
+{
+  "name": "reactor: exact-route key normalization does not conflate distinct segment layouts",
+  "kind": "compile",
+  "source": "route-exact-key-distinct.p",
+  "compile_exit": 0,
+  "run": true,
+  "run_env": {"STRUT_HTTP_REACTOR": "1"},
+  "run_exit": 0,
+  "run_stdout": "p1ABC\np2DEF\np3GHI\np4A\np5ROOT\np6404\n",
+  "run_stderr": ""
+}
