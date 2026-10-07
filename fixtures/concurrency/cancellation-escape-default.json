@@ -1,7 +1,7 @@
 {
   "name": "request.cancellation escapes the callback and querying it after completion is safe (legacy)",
   "kind": "compile",
-  "source": "cancellation-escape.p",
+  "source": "cancellation-escape-default.p",
   "compile_exit": 0,
   "run": true,
   "run_exit": 0,
