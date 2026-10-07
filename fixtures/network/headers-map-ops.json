@@ -6,6 +6,6 @@
   "run": true,
   "run_env": {"STRUT_HTTP_REACTOR": "1"},
   "run_exit": 0,
-  "run_stdout": "mvv\nvaladded\ngrow1\nshrink1\nhost1\nstatus200\n",
+  "run_stdout": "mvv\nvaladded\ngrow1\nshrink1\nhost1\npass1\ncopyeq1\nclr0\nstatus200\n",
   "run_stderr": ""
 }
