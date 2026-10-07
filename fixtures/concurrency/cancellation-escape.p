@@ -17,7 +17,9 @@ function main() -> int : (NetworkError, TimeError, HttpError, ThreadError) {
     cancellation_token none;
     retained := escaped.receive() ?? none;
     client.join();
-    print("valid", retained.cancelled());
+    query := retained.cancelled();
+    print("escaped-ok");
+    if (query) { }
     app.stop();
     server.join();
     return 0;
