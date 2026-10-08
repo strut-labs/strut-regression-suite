@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" with checked errors is rejected until the FFI error ABI",
+  "kind": "compile_fail",
+  "source": "export-checked-error.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["checked errors are not supported until the FFI error ABI is enabled"]
+}

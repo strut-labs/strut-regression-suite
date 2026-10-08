@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects duplicate C symbols (no overloading across the C ABI)",
+  "kind": "compile_fail",
+  "source": "export-duplicate-symbol.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["duplicate exported C symbol"]
+}
