@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects safe owning pointer",
+  "kind": "compile_fail",
+  "source": "export-owning-pointer.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["cannot cross the C ABI", "safe owning ptr"]
+}

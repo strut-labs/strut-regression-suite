@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects pointer return without a lifetime contract",
+  "kind": "compile_fail",
+  "source": "export-pointer-return.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["no defined lifetime across the C ABI", "raw_ptr<int_32>"]
+}
