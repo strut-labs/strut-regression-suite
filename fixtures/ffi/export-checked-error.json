@@ -1,8 +1,8 @@
 {
-  "name": "export \"C\" with checked errors is rejected until the FFI error ABI",
+  "name": "export \"C\" checked-error function with non-primitive return is rejected",
   "kind": "compile_fail",
   "source": "export-checked-error.p",
   "compile_args": ["--check", "{source}"],
   "compile_exit": 1,
-  "compile_stderr_contains": ["checked errors are not supported until the FFI error ABI is enabled"]
+  "compile_stderr_contains": ["non-primitive return type 'string'", "FFI-6 initially supports primitive or void returns"]
 }
