@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects callback with non-primitive return",
+  "kind": "compile_fail",
+  "source": "export-callback-bad-return.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["callback whose parameters/return must be void or fixed-width int/uint/float primitives"]
+}

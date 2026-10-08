@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects returning a callback",
+  "kind": "compile_fail",
+  "source": "export-callback-return.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["returning a callback from an exported function is not supported yet"]
+}

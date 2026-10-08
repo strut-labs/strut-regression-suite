@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects checked-error callback",
+  "kind": "compile_fail",
+  "source": "export-callback-checked-error.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["checked-error callbacks require the FFI error ABI (FFI-6)"]
+}
