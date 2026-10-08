@@ -4,5 +4,5 @@
   "source": "export-unsupported-type.p",
   "compile_args": ["--check", "{source}"],
   "compile_exit": 1,
-  "compile_stderr_contains": ["is not an ABI-supported type"]
+  "compile_stderr_contains": ["is not an ABI-safe type"]
 }

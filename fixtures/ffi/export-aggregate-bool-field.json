@@ -1,0 +1,8 @@
+{
+  "name": "export \"C\" rejects aggregate with deferred bool field",
+  "kind": "compile_fail",
+  "source": "export-aggregate-bool-field.p",
+  "compile_args": ["--check", "{source}"],
+  "compile_exit": 1,
+  "compile_stderr_contains": ["not an ABI-safe type", "field 'b' has unsupported ABI type 'bool'"]
+}
