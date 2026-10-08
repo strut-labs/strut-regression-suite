@@ -1,3 +1,3 @@
-export "C" function bad(string value) -> string {
-    return value;
+export "C" function bad(bool flag) -> bool {
+    return flag;
 }
