@@ -1,0 +1,1 @@
+{"name":"weak server capture breaks the handler reference cycle (legacy)","kind":"compile","source":"weak-ownership-cycle-break.p","run":true,"run_stdout":"200\nbye\n"}

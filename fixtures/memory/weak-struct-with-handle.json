@@ -1,0 +1,1 @@
+{"name":"weak ownership of a struct containing a native handle","kind":"compile","source":"weak-struct-with-handle.p","run":true,"run_stdout":"holder-live\n0\n"}

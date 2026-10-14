@@ -1,0 +1,1 @@
+{"name":"weak ownership of a native handle (http_server)","kind":"compile","source":"weak-native-handle.p","run":true,"run_stdout":"live\n0\n"}
